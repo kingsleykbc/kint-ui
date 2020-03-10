@@ -18,15 +18,16 @@ const Exhibit = (
       borderRadius={borderRadius || "5px"}
     >
       <Column stretchChildren fillHeight>
+        
+        {/* ITEM */}
         <Flex crossSpan="stretch" span={1}>
-          {/* ITEM */}
-          <Container padding={contentPadding || "15px"} background={background} className="item" align="center">
+          <Container padding={contentPadding || "20px"} background={background} className="item" align="center">
             {children}
           </Container>
         </Flex>
 
         {/* LABEL */}
-        <Container className="label" hasBorder={true} borderDirections="t" padding="15px">
+        <Container className="label" hasBorder={true} borderDirections="t" padding="20px">
           <Text fontWeight="bold"> {label} </Text>
         </Container>
       </Column>

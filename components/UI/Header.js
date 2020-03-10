@@ -12,7 +12,7 @@ import SearchInput from './HeaderComponents/SearchInput';
 
 export default class Header extends Component {
   render() {
-    const {children, hPadding, vPadding, hasShadow, position} = this.props;
+    const {children, hPadding, color, vPadding, hasShadow, position} = this.props;
 
     /**
      * GET THE CSS
@@ -21,30 +21,33 @@ export default class Header extends Component {
     const boxShadow = (hasShadow !== false) ? theme.boxShadows.medShadow : "none";
 
     return (
-      <Row className="Header">
-        {children}
+      <div className="Header">
+        <Row className="HeaderInner" span={1}>
+          {children}
+        </Row>
 
         <style jsx>{`
-          :global(.Header) {
+          .Header {
+            display: flex;
+            align-items: center;
             z-index: 5;
             width: 100%;
             position: ${position || "static"};
             top:0;
             left:0;
             height: 60px !important;
-          }
-        `}</style>
-        
-        { /* STYLE ======================================================================================= */}
-        <style jsx>{`
-          :global(.Header) {
-            background: ${theme.colors.backgroundColor};
+            background: ${color ? color : theme.colors.backgroundColor};
             padding: ${padding};
             box-shadow: ${boxShadow};
           }
+
+          /** REMOVE THIS PLACE LATER N EDIT THEME INSTEAD */
+          .Header :global(*),  .Header :global(.SearchBar svg *){
+            color: ${color ? "#fff" : theme.colors.textColor};
+          }
         `}</style>
         
-      </Row>
+      </div>
     );
   }
 }

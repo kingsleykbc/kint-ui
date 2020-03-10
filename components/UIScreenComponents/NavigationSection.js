@@ -1,10 +1,15 @@
 import React from 'react';
+import Container from '../UI/Container';
+import Exhibit from '../UI/Exhibit';
 
 const NavigationSection = () => {
   return (
-    <div>
-      NAVIGATION SECTION
-    </div>
+    <Container marginTop="20px" marginVertical="15px">
+
+      <Exhibit label="TabbedView">
+
+      </Exhibit>
+    </Container>
   );
 };
 

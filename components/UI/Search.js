@@ -6,13 +6,13 @@ import Container from './Container';
 
 const Search = ({placeholder, onChange, onSearch}) => {
   return (
-    <div className="Search">
-      <Row>
-        <Flex span={1} responsiveWidth="auto" align="center" crossSpan="center">
+    <div className="Search"> 
+      <Row wrap={false}>
+        <Flex span={1} shrink={2} align="center" crossSpan="center">
           <input className="search" type="text" placeholder={placeholder} onChange={onChange} />
         </Flex>
         <Container marginLeft="8px">
-          <ClickableIcon color="#000"><IcSearch/></ClickableIcon>
+          <ClickableIcon icon={<IcSearch />} color="#000"/>
         </Container>
       </Row>
 

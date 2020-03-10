@@ -54,7 +54,8 @@ const TestLayout = ({children}) => {
 
         hr{
           border: none;
-          border-top: 2px solid ${theme.colors.borderColor};
+          border-top: 1px solid ${theme.colors.borderColor};
+          margin: 15px auto;
         }
 
         input{
@@ -63,6 +64,7 @@ const TestLayout = ({children}) => {
           padding: 8px 12px;
           font-size: 1rem;
           outline: none;
+          background: none;
         }
 
         input::placeholder{

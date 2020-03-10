@@ -5,20 +5,24 @@ const Logo = ({ children }) => {
 
 
   return (
-    <Row className="Logo">
+    <div className="Logo">
       {children}
 
       { /* STYLE ======================================================================================= */}
       <style jsx>{`
-        
+        .Logo {
+          display: inline-flex;
+          align-items: center;
+          font-weight: bold;
+        }
         @media screen and (max-width: 800px){
-          :global(.Logo) {
+          .Logo {
             flex-grow: 1 !important;
             width: auto !important;
           }
         }
       `}</style>
-    </Row>
+    </div>
   );
 };
 

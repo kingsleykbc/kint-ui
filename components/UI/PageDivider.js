@@ -30,7 +30,7 @@ const PageDivider = ({label, labelPosition, vPadding, borderWidth, borderColor }
 
       <style jsx>{`
         .PageDivider{
-          padding: ${vPadding || "25px"} 0;
+          padding: ${vPadding || "22px"} 0;
         }
 
         .label{
@@ -40,6 +40,7 @@ const PageDivider = ({label, labelPosition, vPadding, borderWidth, borderColor }
 
         .PageDivider :global(hr){
           border-width: ${borderWidth || "1px"};
+          ${borderColor || `border-color: ${borderColor};`}
         }
       `}</style>
     </div>

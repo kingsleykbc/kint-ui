@@ -39,8 +39,8 @@ const ui = () => {
         <ButtonSection/>
         <DropDownSection/>
         <HeaderSection/>
-        <LayoutSection/>
         <NavigationSection/>
+        <LayoutSection/>
         <ListSection/>
         <FormSection/>
         <InfoSection/>

@@ -37,11 +37,10 @@ const TestHeader = () => {
       <Header.AccountSection responsiveChild={<AccountOptions/>}>
         <DropDownView
           trigger="hover"
-          view={
-            <IconText icon={<IcAccount />} iconBack={<IcDown />} iconBackColor={theme.colors.lightestText}> Account </IconText>
-          }
+          view={<IconText padding="0" icon={<IcAccount />}>Account</IconText>}
           dropView={<AccountOptions/>}
           padding="0"
+          viewPadding="0"
           origin="bottom-right"
         />
       </Header.AccountSection>
@@ -54,10 +53,10 @@ const TestHeader = () => {
  */
 const AccountOptions = () => (
   <Container padding="10px">
-    <Container hasBorder borderDirections="b" onClick={()=> alert("sude")} highlightOnHover={false}>
+    <Container hasBorder borderDirections="b" highlightOnHover={false}>
       <IconText icon={<Option/>}>Sample One</IconText>
     </Container>
-    <Container onClick={() => alert("sude")} highlightOnHover={false}>
+    <Container  highlightOnHover={false}>
       <IconText icon={<Option />}>Sample One</IconText>
     </Container>
   </Container>

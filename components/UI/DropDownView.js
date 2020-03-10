@@ -1,23 +1,40 @@
 import React,{useState, useEffect} from 'react';
 import theme from '../../config/theme';
-import { Row } from './Flex';
+import IcDown from 'react-icons/lib/md/keyboard-arrow-down';
 
-const DropDownView = (
-  { view, dropView, initialShow, trigger, origin, padding, highlightOnHover, matchWidth }
-) => {
-  const [display, setDisplay] = useState("none");
-  const [displayClass, setDisplayClass] = useState("hide");
-  const [show, setShow ] = useState(initialShow);
-  const toggle = () => setShow(!show);
+const DropDownView = ({ 
+  view, dropView, initialShow, trigger, origin, padding, viewPadding, width, closeOnDropViewClick,
+  highlightOnHover, matchWidth, showArrow, arrowColor, dropdownWidth, hasBackdrop
+}) => {
 
+  /**
+   * GET CSS VALUES
+   */
   trigger = trigger || "click";
+  padding = padding || "0 10px";
+  viewPadding = viewPadding || "10px";
+  origin  = origin || "bottom-left";
 
+  arrowColor = arrowColor || theme.colors.lightestText;
+  width = width || "auto";
+  const hoverBg = (highlightOnHover !== false) ? `${theme.colors.highlightColor}` : "none";
+
+  // Set the position of the dropdown
   let positionConfig = `top: 100%; right:0;`;
   switch(origin){
-    case "bottom-left": positionConfig = "top: 100%; left: 0;";
-    case "top-left": positionConfig = "bottom: 100%; left: 0;";
-    case "top-right": positionConfig = "bottom: 100%; right: 0;";
+    case "bottom-left": positionConfig = "top: 100%; left: 0;"; break;
+    case "bottom-right": positionConfig = `top: 100%; right:0;`; break;
+    case "top-left": positionConfig = "bottom: 100%; left: 0;"; break;
+    case "top-right": positionConfig = "bottom: 100%; right: 0;"; break;
   }
+
+  /**
+   * HANDLE TOGGLE ANIMATION
+   */
+  const [display, setDisplay] = useState("none");
+  const [displayClass, setDisplayClass] = useState("hide");
+  const [show, setShow] = useState(initialShow);
+  const toggle = () => setShow(!show);
 
   useEffect(() => {
     let timeOut;
@@ -32,7 +49,6 @@ const DropDownView = (
     return () => clearTimeout(timeOut);
   }, [show]);
 
-
   // =======================================================================
   //  UI
   // =======================================================================
@@ -42,87 +58,69 @@ const DropDownView = (
       {/* VISIBLE VIEW */}
       <div className="view" onClick={trigger === "click" ? toggle : undefined} onMouseEnter={trigger === "hover" ? toggle : undefined}>
         {view}
+        {showArrow !== false && <div className={`dropIcon ${displayClass}`}> <IcDown/> </div> }
       </div>
 
       {/* DROPDOWN VIEW */}
       {dropView && <div className={`dropView ${displayClass}`}>
-          {dropView}
+          <div onClick={closeOnDropViewClick && toggle}> {dropView}</div>
           {trigger === "hover" && <div className="safeArea"></div>}
         </div>
       }      
 
-      {show && <div 
-        className="back" 
-        onClick={trigger === "click" ? toggle : undefined } 
-        onMouseEnter={trigger === "hover" ? toggle : undefined }></div>
+      {show && 
+        <div 
+          className="back" 
+          onClick={trigger === "click" ? toggle : undefined }
+          onMouseEnter={trigger === "hover" ? toggle : undefined }>
+        </div>
       }
 
       { /* STYLE ======================================================================================= */}
       <style jsx>{`
         .DropDownView{
           position: relative;
+          display: inline-flex;
+          width: ${width};
         }
 
         .view{
           position: relative;
           min-width: 100px;
+          padding: ${padding};
           min-height: 40px;
           cursor: pointer;
-          display: flex;
+          justify-content: space-between;
           align-items: center;
-          justify-content: center;
+          display: flex;
+          width: 100%;
           z-index: 3;
           border-radius: 5px;
-          transition: background-color linear 0.25s;
+          transition: ${`background-color linear 0.25s`};
         }
 
-        .view :hover{
-          background: ${(highlightOnHover !== false) ? theme.colors.highlightColor : "none"};
+        .view :hover {
+          background: ${hoverBg};
         }
 
-        .dropView {
-          display: ${display};
-          position: absolute;
-          z-index: 4;
-          padding: ${padding || "10px"};
-          width:auto;
-          ${positionConfig}
-          border-radius: 3px;
-          background: ${theme.colors.backgroundColor};
-          box-shadow: ${theme.boxShadows.medShadow};
-          white-space: nowrap;
-          width: ${matchWidth ? "100%" : "auto"};
-        }
-        
-        .dropView.show{
-          animation: fadeIn 0.2s 1 linear forwards;
-          
-        }
-        .dropView.hide{
-          animation: fadeOut 0.2s 1 linear forwards;
-          
+        .dropIcon{
+          margin-left: 10px;
+          font-size: 1.5em;
+          display: inline-flex;
         }
 
-        @keyframes fadeIn {
-          0% {
-            opacity: 0;
-            transform: scale(0.7);
-          }
-          100% {
-            opacity: 1;
-            transform: scale(1);
-          }
+        .dropIcon :global(svg *){
+          color: ${arrowColor};
         }
 
-        @keyframes fadeOut {
-          0% {
-            opacity: 1;
-            transform: scale(1);
-          }
-          100% {
-            opacity: 0;
-            transform: scale(0.7);
-          }
+        .dropIcon.show :global(svg){
+          transition: transform linear 0.2s;
+          transform: rotate(180deg);
+        }
+
+        .dropIcon.hide :global(svg){
+          transition: transform linear 0.2s;
+          transform: rotate(0deg);
         }
 
         .safeArea{
@@ -141,8 +139,53 @@ const DropDownView = (
           z-index: 2;
           right: 0;
           bottom: 0;
+          background: ${(hasBackdrop) ? theme.colors.tintColor : "none"};
         }
 
+        .dropView {
+          display: ${display};
+          position: absolute;
+          z-index: 4;
+          padding: ${viewPadding};
+          width:auto;
+          ${positionConfig}
+          border-radius: 3px;
+          background: ${theme.colors.backgroundColor};
+          box-shadow: ${theme.boxShadows.medShadow};
+          width: ${`${matchWidth ? "100%" : (dropdownWidth) ? dropdownWidth : "200px"}`};
+        }
+        
+        .dropView.show{
+          animation: fadeIn 0.2s 1 linear forwards;
+        }
+
+        .dropView.hide{
+          animation: fadeOut 0.2s 1 linear forwards;          
+        }
+
+        @keyframes fadeIn {
+          0% {
+            opacity: 0;
+            transform: scale(0.7);
+          }
+
+          100% {
+            opacity: 1;
+            transform: scale(1);
+          }
+        }
+
+        @keyframes fadeOut {
+          0% {
+            opacity: 1;
+            transform: scale(1);
+          }
+
+          100% {
+            opacity: 0;
+            transform: scale(0.7);
+          }
+        }
       `}</style>
     </div>
   );

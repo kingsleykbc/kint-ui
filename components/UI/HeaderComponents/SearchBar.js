@@ -23,7 +23,7 @@ const SearchBar = ({ children, alignment, responsiveIcon }) => {
         .SearchBar {
           flex-grow: 1;
           justify-content: ${justify};
-          margin: 0 10px;
+          margin-left: 20px;
         }
         .SearchBar :global(.large){
           display: flex;
@@ -66,9 +66,7 @@ const MobileView = ({ responsiveIcon, children }) => {
  * DESKTOP
  */
 const DesktopView = ({ justify, children }) => (
-  <Row className="searchBarContent" span={1} justify={justify}>
-    {children}
-  </Row>
+  <Row className="searchBarContent" span={1} justify={justify}>{children}</Row>
 );
 
 /**
@@ -79,9 +77,8 @@ const MobileSearchInput = ({show, toggle, children}) => {
 
   return (
     <div className="MobileSearchInput">
-      <ClickableIcon highlightBackground={false} onClick={toggle}><IcBack/></ClickableIcon>
+      <ClickableIcon icon={<IcBack />} highlightBackground={false} onClick={toggle}/>
       <div className="searchSection"> {children} </div>
-
 
       { /* STYLE ======================================================================================= */}
       <style jsx>{`
@@ -100,7 +97,7 @@ const MobileSearchInput = ({show, toggle, children}) => {
 
         .searchSection {
           flex-grow: 1;
-          margin-left: 10px;
+          margin-left: 5px;
         }
       `}</style>
     </div>

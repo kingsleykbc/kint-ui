@@ -9,6 +9,7 @@ import Container from '../UI/Container';
 
 import Icon from 'react-icons/lib/md/center-focus-strong';
 import Icon2 from 'react-icons/lib/md/cached';
+import DividedText from '../UI/DividedText';
 
 const TextSection = () => {
   return (
@@ -75,15 +76,30 @@ const TextSection = () => {
           </Flex>
         </Row>
 
-        {/* PARAGRAPH */}
-        <Exhibit label="Par" marginVertical="20px">
-          <Par>
-            My name is Kingsley, and this is a random string to showcase the <b> {"<Par/>"} </b> component. In this component,
-            can adjust all the attributes of the text, like in the <b>{"<Text/>"}</b> component, as well as set the line height,
-            and wrap behaviour.
-          </Par>
-        </Exhibit>
-      </Column>      
+        <Row wrap={false}>
+          <Flex> 
+            {/* PARAGRAPH */}
+            <Exhibit label="Par" marginVertical="20px">
+              <Par>
+                My name is Kingsley, and this is a random string to showcase the <b> {"<Par/>"} </b> component. In this component,
+                can adjust all the attributes of the text, like in the <b>{"<Text/>"}</b> component, as well as set the line height,
+                and wrap behaviour.
+              </Par>
+            </Exhibit>
+          </Flex>
+
+          <Flex span={1} shrink={0}>
+            {/* PARAGRAPH */}
+            <Exhibit label="DividedText" marginVertical="20px">
+              <DividedText items={["These", "are", "divided", "Texts"]} />
+              <DividedText items={["These", "are", <Text color={theme.colors.primaryColor} fontWeight="bold">Custom</Text>, "divided", "Texts"]} />
+              <DividedText items={["These", "are", <h3>Divided</h3>, "widgets", <Icon2/>]} />
+            </Exhibit>
+          </Flex>
+        </Row>
+      </Column>     
+
+      <br/><br/> 
     </div>
   );
 };

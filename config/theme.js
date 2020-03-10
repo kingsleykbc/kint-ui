@@ -4,7 +4,10 @@ const theme = {
     backgroundColor: "#fff",
     highlightColor: "#f0edfa",
     primaryColor: "#fa2549",
-    secondaryColor: "#7351ed",
+    secondaryColor: "#5b63f5",
+    successColor: "#1aeda7",
+    dangerColor: "#fa2549",
+    faintColor: "#f7f8ff",
     
     textColor: "#000",
     lightText: "#807b9e",
@@ -12,6 +15,7 @@ const theme = {
 
     tintColor: "rgba(30, 25, 50, 0.4)"
   },
+  
   boxShadows: {
     medShadow: "0 2px 4px rgba(0,0,0,0.2)",
     smallShadow: "0 2px 2px rgba(0,0,0,0.2)"

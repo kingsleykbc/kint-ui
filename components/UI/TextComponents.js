@@ -51,7 +51,6 @@ export const Par = ({ children, wrap, slicedAt, color, fontStyle, fontWeight, fo
           font-style:  ${fontStyle || "normal"};
           font-weight: ${fontWeight || "normal"};
         }
-
       `}</style>
     </p>
   );

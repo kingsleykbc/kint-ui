@@ -1,11 +1,12 @@
 import React from 'react';
+import classnames from 'classnames';
 import theme from '../../config/theme';
 import DotLoader from './DotLoader';
 import CircularLoader from './CircularLoader';
 import Container from './Container';
 
 const Button = ({ 
-  label, onClick, isLoading, rounded, disabled, borderRadius, icon, hasShadow, iconPosition, iconColor,
+  label, onClick, isLoading, rounded, disabled, borderRadius, icon, hasShadow, iconPosition, iconColor, className,
   filled, color, textColor, hoverColor, width, slideDirection, loadingText, showTextOnLoad, hPadding, vPadding
 }) => {
   /**
@@ -42,8 +43,8 @@ const Button = ({
     : (isLoading && (!loadingText && !showTextOnLoad)) ? ""
     : label; 
 
-  const vP = vPadding || "8px";
-  const hP = hPadding ? hPadding : (!label) ? "8px" : "15px";
+  const vP = vPadding || "9px";
+  const hP = hPadding ? hPadding : (!label) ? "9px" : "17px";
   const padding = `${vP} ${hP}`;
   const cursor = (disabled) ? "no-drop" : "pointer";
 
@@ -57,7 +58,7 @@ const Button = ({
   //  UI
   // =======================================================================
   return (
-    <button onClick={onClick}>
+    <button className={classnames({ [className]: className })} onClick={onClick}>
       {(icon && !isLoading && iconPosition === "left") && <div className="icon">{icon}</div>}
       {isLoading && loader}
       {text && text}

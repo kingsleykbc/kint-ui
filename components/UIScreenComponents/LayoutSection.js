@@ -3,7 +3,7 @@ import React from 'react';
 const LayoutSection = () => {
   return (
     <div>
-      ADD PAGE DIVIDER AND FLEX BOX HERE
+      LAYOUT SECTION - ADD PAGE DIVIDER, SECTION CONTENT, CONTAINER, FLEXBOX
     </div>
   );
 };

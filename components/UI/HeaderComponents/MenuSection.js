@@ -1,5 +1,5 @@
 import React,{useState} from 'react';
-import {Flex, Row, Column} from '../Flex';
+import { Row, Column} from '../Flex';
 
 import IcMenu from 'react-icons/lib/md/menu';
 import Drawer from '../Drawer';
@@ -8,15 +8,31 @@ import ClickableIcon from '../ClickableIcon';
 import theme from '../../../config/theme';
 import Con from '../Container';
 
-const MenuSection = ({ children, alignment, responsiveIcon, className }) => {
+const MenuSection = ({ children, alignment, responsiveIcon, responsiveCollapse }) => {
   const span = (alignment && alignment != "right") && 1;
   const justify = (alignment == "left") ? "flex-start" : (alignment == "center") ? "center" : "flex-end";
 
   return (
-    <ResponsiveToggle
-      small = {<MobileMenu responsiveIcon={responsiveIcon}>{children}</MobileMenu>}
-      large = {<DesktopMenu span={span} justify={justify}>{children}</DesktopMenu>}
-    />
+    <div className="MenuSection">
+      <ResponsiveToggle
+        maxWidth={responsiveCollapse}
+        small = {<MobileMenu responsiveIcon={responsiveIcon}>{children}</MobileMenu>}
+        large = {<DesktopMenu span={span} justify={justify}>{children}</DesktopMenu>}
+      />
+
+      { /* STYLE ======================================================================================= */}
+      <style jsx>{`
+        .MenuSection {
+          margin-left: 10px;
+          flex-grow: ${span};
+        }
+        @media screen and (max-width: ${"800px"}){
+          .MenuSection {
+            flex-grow: 0;
+          }
+        }
+      `}</style>
+    </div>
   );
 };
 
@@ -28,7 +44,7 @@ const MobileMenu = ({ children,  responsiveIcon }) => {
   const toggleResponsiveMenu = () => setShowResponsiveMenu(!showResponsiveMenu);
 
   return (
-    <Flex className="MenuSection">
+    <Row className="MenuSection">
       <ClickableIcon 
         icon={responsiveIcon || <IcMenu />} 
         onClick={toggleResponsiveMenu} 
@@ -36,15 +52,14 @@ const MobileMenu = ({ children,  responsiveIcon }) => {
         hasBorder={true}
       />
 
-      <Drawer show={showResponsiveMenu} toggle={toggleResponsiveMenu}>      
-
-        <Column fillHeight={true} crossSpan="stretch">
-          <Flex crossSpan="stretch">
-            <Con padding="20px"> {children} </Con>
-          </Flex>
-        </Column>
+      <Drawer show={showResponsiveMenu} toggle={toggleResponsiveMenu}>
+        <Con padding="20px"> 
+          <Column fillHeight={true} stretchChildren>
+          {children} 
+          </Column>
+        </Con>
       </Drawer>
-    </Flex>
+    </Row>
   );
 }
 

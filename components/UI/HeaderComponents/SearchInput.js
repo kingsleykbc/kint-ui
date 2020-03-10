@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React from 'react';
 import DropDownView from '../DropDownView';
 import Search from '../Search';
 
@@ -7,6 +7,9 @@ const SearchInput = ({placeholder, maxWidth, suggestions, onChange}) => {
   return (
     <div className="SearchInput">
       <DropDownView
+        showArrow={false}
+        width="100%"
+        padding="0"
         view={<Search placeholder={placeholder} onChange={onChange}/>}
         dropView={(suggestions.length > 0) && suggestions}
         highlightOnHover={false}

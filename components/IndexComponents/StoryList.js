@@ -7,7 +7,6 @@ import IcGo from 'react-icons/lib/md/bookmark';
 import {Text} from '../UI/TextComponents';
 import theme from '../../config/theme';
 
-
 const StoryList = ({stories}) => {
   return <ListView component={Story} data={stories}/>
 };

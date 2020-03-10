@@ -6,12 +6,14 @@ import ResponsiveToggle from '../ResponsiveToggle';
 import theme from '../../../config/theme';
 import ClickableIcon from '../ClickableIcon';
 import Drawer from '../Drawer'; 
+import Container from '../Container';
 
-const AccountSection = ({ children, responsiveIcon, responsiveChild }) => {
+const AccountSection = ({ children, responsiveIcon, responsiveChild, responsiveCollapse }) => {
 
   return (
     <div className="AccountSection">
       <ResponsiveToggle
+        maxWidth={responsiveCollapse}
         small={<MobileView responsiveIcon={responsiveIcon}>{responsiveChild || children}</MobileView>}
         large={<DesktopView>{children}</DesktopView>}
       />
@@ -46,7 +48,11 @@ const MobileView = ({ responsiveIcon, children }) => {
         hasShadow={true}
       />
 
-      <Drawer show={showDrawer} toggle={toggle}> {children} </Drawer>
+      <Drawer show={showDrawer} toggle={toggle}> 
+        <Container padding="10px">
+          {children} 
+        </Container>
+      </Drawer>
     </div>
   );
 }
