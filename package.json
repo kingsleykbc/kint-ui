@@ -5,11 +5,20 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "export": "next export",
+    "deploy": "cd out && now --public",
     "start": "next start"
   },
   "dependencies": {
+    "axios": "^0.19.2",
+    "classnames": "^2.2.6",
     "next": "9.2.2",
+    "nprogress": "^0.2.0",
     "react": "16.13.0",
-    "react-dom": "16.13.0"
+    "react-breadcrumbs-dynamic": "^1.2.1",
+    "react-dom": "16.13.0",
+    "react-icons": "^2.2.7",
+    "react-responsive": "^8.0.3",
+    "slugify": "^1.4.0"
   }
 }
