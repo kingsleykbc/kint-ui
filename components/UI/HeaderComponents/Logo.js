@@ -1,5 +1,4 @@
 import React from 'react';
-import {Row} from '../Flex';
 
 const Logo = ({ children }) => {
 

@@ -32,7 +32,7 @@ const HeaderSection = () => {
         </Header.AccountSection>
       </Header>
 
-      <Container padding="15px"/>
+      <Container padding="5px"/>
 
       {/* WITH SEARCH BAR HEADER */}
       <Header position="static">
@@ -58,15 +58,15 @@ const HeaderSection = () => {
         </Header.AccountSection>
       </Header>
 
-      <Container padding="15px" />
+      <Container padding="5px" />
 
       {/* WITH SEARCH BAR HEADER */}
       <Header position="static">
-        <Header.Logo>Sized Searchbar</Header.Logo>
+        <Header.Logo>Sized</Header.Logo>
 
         <Header.SearchBar>
           <Header.SearchInput
-          maxWidth="250px"
+            maxWidth="250px"
             placeholder="Search Items"
             suggestions={[]}
           />
@@ -79,18 +79,15 @@ const HeaderSection = () => {
         </Header.MenuSection>
 
         <Header.AccountSection responsiveCollapse="1000px" >
-          <IconText icon={<Icon />}>
-            Edge Button
-        </IconText>
-        </Header.AccountSection>
+          <IconText icon={<Icon />}> Edge Button </IconText>
+        </Header.AccountSection> 
       </Header>
 
-      <Container padding="15px" />
-
+      <Container padding="5px" />
 
       {/* COLORED HEADER */}
       <Header position="static">
-        <Header.Logo>Aligned Searchbar</Header.Logo>
+        <Header.Logo>Aligned </Header.Logo>
 
         <Header.SearchBar alignment="right">
           <Header.SearchInput
@@ -109,33 +106,6 @@ const HeaderSection = () => {
         <Header.AccountSection responsiveCollapse="1000px" >
           <IconText icon={<Icon />}>
             Edge Button
-      </IconText>
-        </Header.AccountSection>
-      </Header>
-
-      <Container padding="15px"/>
-
-        {/* WITH SEARCH BAR HEADER */}
-        <Header position="static" color={theme.colors.secondaryColor}>
-          <Header.Logo>Colored Header</Header.Logo>
-
-          <Header.SearchBar alignment="left">
-            <Header.SearchInput
-              maxWidth="250px"
-              placeholder="Search Items"
-              suggestions={[]}
-            />
-          </Header.SearchBar>
-
-          <Header.MenuSection responsiveCollapse="1000px" >
-            <TextButton padding="10px" color={theme.colors.textColor}>Item 1</TextButton>
-            <TextButton padding="10px" color={theme.colors.textColor}>Item 2</TextButton>
-            <TextButton padding="10px" color={theme.colors.textColor}>Item 3</TextButton>
-          </Header.MenuSection>
-
-          <Header.AccountSection responsiveCollapse="1000px" >
-            <IconText icon={<Icon />}>
-              Edge Button
       </IconText>
         </Header.AccountSection>
       </Header>

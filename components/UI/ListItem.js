@@ -13,14 +13,17 @@ const ListItem = ({
   /**
    * GET THE STYLES
    */
+  flexAlignment = flexAlignment || "flex-start";
   const bottomBorder = (hasBottomBorder !== false && !hasShadow) ? `1px solid ${theme.colors.borderColor}` : "none";
   const padding = `${vPadding || "15px"}  ${(hPadding) ? hPadding : (hasShadow) ? "15px" : "0"}`;
   const boxShadow = hasShadow ? theme.boxShadows.smallShadow : "none";
   const margin = hasShadow ? "5px 0" : "0";
+  const cursor = onClick ? "pointer" : "default";
+  const transform = (growOnHover) ? "scale(1.1)" : "none";
  
 
   return (
-    <Row wrap={false}  dir="row" className="ListItem" onClick={onClick} align={flexAlignment || "center"}>
+    <div className="ListItem" onClick={onClick}>
  
       {/* LEADING ICON */}
       {icon && <div className="icon">{icon}</div>}
@@ -36,20 +39,56 @@ const ListItem = ({
 
 
       { /* STYLE ======================================================================================= */}
+
       <style jsx>{`
-        :global(.ListItem:last-child){
-          border-bottom: none;
+        .ListItem {
+          display: flex;
+          border-bottom: ${bottomBorder} !important;
+          padding: ${padding};
+          margin: ${margin};
+          box-shadow: ${boxShadow};     
+          cursor: ${cursor};
+          transition: ${"all linear"} 0.3s;
+          align-items: ${flexAlignment};
         }
-  
+
+        .ListItem:last-child {
+          border-bottom: ${"none"} !important;
+        }
+
+        .ListItem:hover {
+          transform: ${transform};
+        }
+
+        h3{
+          margin-bottom: 8px;
+          font-weight: ${titleWeight || "bold"};
+          font-size: ${titleSize || "1.12rem"};
+        }
+
         .icon{
           font-size: 2.5rem;
           margin-right: 10px;
           vertical-align: middle;
         }
 
-        h3{
-          margin-bottom: 8px; 
+        .subtitle {
+          color: ${subTitleColor || theme.colors.lightText};
         }
+
+        .ListItem :global( svg *){
+          color: ${iconColor || theme.colors.primaryColor} !important;
+          vertical-align: middle;
+        }
+
+        .goIcon{
+          align-self: center;
+        }
+
+        .goIcon :global(svg){
+          font-size: 1.3rem;
+        }
+
 
         @media screen and (max-width: 800px){
           .icon {
@@ -58,34 +97,7 @@ const ListItem = ({
           }
         }
       `}</style>
-
-      <style jsx>{`
-        :global(.ListItem) {
-          border-bottom: ${bottomBorder} !important;
-          padding: ${padding};
-          margin: ${margin};
-          box-shadow: ${boxShadow};          
-        }
-
-        h3{
-          font-weight: ${titleWeight || "bold"};
-          font-size: ${titleSize || "1.12rem"};
-        }
-
-        .subtitle {
-          color: ${subTitleColor || theme.colors.lightText};
-        }
-
-        :global(.ListItem svg *){
-          color: ${iconColor || theme.colors.primaryColor} !important;
-          vertical-align: middle;
-        }
-
-        .goIcon :global(svg){
-          font-size: 1.3rem;
-        }
-      `}</style>
-    </Row>
+    </div>
   );
 };
 

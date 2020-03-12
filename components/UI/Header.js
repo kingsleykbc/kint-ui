@@ -22,10 +22,7 @@ export default class Header extends Component {
 
     return (
       <div className="Header">
-        <Row className="HeaderInner" span={1}>
-          {children}
-        </Row>
-
+        <Row className="HeaderInner" span={1}>{children}</Row>
         <style jsx>{`
           .Header {
             display: flex;
@@ -41,10 +38,6 @@ export default class Header extends Component {
             box-shadow: ${boxShadow};
           }
 
-          /** REMOVE THIS PLACE LATER N EDIT THEME INSTEAD */
-          .Header :global(*),  .Header :global(.SearchBar svg *){
-            color: ${color ? "#fff" : theme.colors.textColor};
-          }
         `}</style>
         
       </div>

@@ -48,6 +48,8 @@ const Container = (
     maxHeight,
     minWidth,
     minHeight,
+    mobileWidth,
+    mobileHeight,
     alignment,
     borderDirections,
     borderWidth,
@@ -61,6 +63,7 @@ const Container = (
     onClick
   }
 ) => {
+  
   /**
    * GET CSS
    */
@@ -98,6 +101,7 @@ const Container = (
     responsiveMargin || responsiveMarginBottom || responsiveMarginTop || responsiveMarginLeft || 
     responsiveMarginRight || responsiveMarginHorizontal || responsiveMarginVertical
   );
+
   if (hasResponsiveMargin) {
     const rmTop = responsiveMarginTop || responsiveMarginVertical || responsiveMargin || mTop;
     const rmRight = responsiveMarginRight || responsiveMarginHorizontal || responsiveMargin || mRight;
@@ -171,6 +175,8 @@ const Container = (
           .Container {
             margin: ${hasResponsiveMargin ? responsiveMargin : margin};
             padding: ${hasResponsivePadding ? responsivePadding : padding};
+            width: ${mobileWidth || width || "auto"};
+            height: ${mobileHeight || height || "auto"};
           }
         }
       `}</style>

@@ -2,14 +2,14 @@ import React from 'react';
 import classnames from 'classnames';
 
 export const Flex = ({
-  children, className, dir, justify, align, wrap, span, basis, responsiveCollapse, fillHeight, 
-  crossSpan, stretchChildren, shrink,  width, responsiveWidth
+  children, className, dir, justify, align, wrap, span, basis, responsiveWidth, fillHeight, height,
+  crossSpan, stretchChildren, shrink, width, mobileWidth, wrapOnlyResponsive, responsiveCollapse, alignSelf
 }) => {
-  
   /**
    * SETUP CSS
    */
   let flexAttr = "";
+  
   if (dir){
     flexAttr = "display: flex;";
     align = align || (dir === "column" ? "flex-start" : "center");
@@ -21,15 +21,12 @@ export const Flex = ({
       justify = temp;
     }
   }
-
   // =======================================================================
   //  UI
   // =======================================================================
   return (
     <div className={classnames(["Flex",{ [className]: className}])}>
       {children}
-
-
 
       { /* DYNAMIC STYLE ======================================================================================= */}
       <style jsx>{`
@@ -43,24 +40,18 @@ export const Flex = ({
           flex-grow: ${span || 0};
           flex-shrink: ${(shrink == 0) ? 0 : 1};
           flex-basis: ${basis || "auto"};
-          height: ${fillHeight ? "100%" : "auto"};
-          flex-wrap: ${wrap === false ? "nowrap" : "wrap"};
+          height: ${fillHeight ? "100%" : (height) ? height : "auto"};
+          flex-wrap: ${(wrap === false || wrapOnlyResponsive) ? "nowrap" : `${"wrap"}`};
         }
 
-        @media screen and (max-width: 800px){
+        @media screen and (max-width: ${responsiveWidth || "800px"}){
           .Flex {
-            width:${responsiveWidth || "100%"};
+            ${(responsiveCollapse) && `flex-direction: column; align-items: stretch;`}
+            width: ${mobileWidth || "100%"};
+            ${wrapOnlyResponsive && "flex-wrap: wrap;"};
           }
         }
-
-        @media screen and (max-width: ${responsiveCollapse}){
-          .Flex {
-            flex-direction: column;
-            align-items: stretch;
-            width: 100%;
-          }
-        }
-        `}</style>
+      `}</style>
     </div>
   );
 };

@@ -60,8 +60,4 @@ const MobileView = ({ responsiveIcon, children }) => {
 /**
  * DESKTOP
  */
-const DesktopView = ({children}) => (
-  <Row>
-    {children}
-  </Row>
-);
+const DesktopView = ({children}) => <Row> {children} </Row>;

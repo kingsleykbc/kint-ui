@@ -2,12 +2,12 @@ const theme = {
   colors: {
     borderColor: "#ddd8e6",
     backgroundColor: "#fff",
-    highlightColor: "#f0edfa",
+    highlightColor: "#f6f5fa",
     primaryColor: "#fa2549",
     secondaryColor: "#5b63f5",
     successColor: "#1aeda7",
     dangerColor: "#fa2549",
-    faintColor: "#f7f8ff",
+    faintColor: "#fafafc",
     
     textColor: "#000",
     lightText: "#807b9e",

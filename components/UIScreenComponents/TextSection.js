@@ -17,7 +17,7 @@ const TextSection = () => {
       <PageDivider label="Text" />
 
       <Column stretchChildren>
-        <Row responsiveCollapse="800px">
+        <Row>
           
           {/* TEXT */}
           <Flex span={2}>
@@ -55,7 +55,7 @@ const TextSection = () => {
           {/* ICON TEXT */}
           <Flex span={1} shrink={0}>
             <Exhibit label="IconText">
-              <Row align="flex-start">
+              <Row align="flex-start" responsiveCollapse >
                 <div>
                   <IconText icon={<Icon />} fontSize="1.5rem">Sized Large</IconText>
                   <br/>
@@ -70,13 +70,15 @@ const TextSection = () => {
                   <IconText icon={<Icon />} iconBack={<Icon2/>} >Dual Icons</IconText>
                   <br />
                   <IconText icon={<Icon />} iconBack={<Icon2 />} iconBackSize="2rem">Dual Sized Icon</IconText>
+                  <br />
+                  <IconText iconBack={<Icon2 />}>Trailing only Icon</IconText>
                 </Container>
               </Row>
             </Exhibit>
           </Flex>
         </Row>
 
-        <Row wrap={false}>
+        <Row wrapOnlyResponsive>
           <Flex> 
             {/* PARAGRAPH */}
             <Exhibit label="Par" marginVertical="20px">
