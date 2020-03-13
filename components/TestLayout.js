@@ -58,17 +58,33 @@ const TestLayout = ({children}) => {
           margin: 15px auto;
         }
 
-        input{
+        input, select, textarea {
           border: 1px solid ${theme.colors.borderColor};
           border-radius: 5px;
           padding: 8px 12px;
           font-size: 1rem;
           outline: none;
+          height: 42px;
           background: none;
+          transition: ${`all linear`} 0.2s;
         }
 
-        input::placeholder{
+        input::placeholder, textarea::placeholder{
           color: ${theme.colors.lightestText};
+        }
+
+        input:focus, textarea:focus, select:focus {
+          box-shadow: ${theme.boxShadows.smallShadow};
+          background: #fff;
+          border: none;
+        }
+        
+        input.hasError {
+          border-color: ${theme.colors.dangerColor};
+        }
+
+        h5{
+          color: ${theme.colors.dangerColor};
         }
 
         @media screen and (max-width: 700px){

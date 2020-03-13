@@ -38,7 +38,7 @@ const LayoutSection = () => {
               <Par> (New width, height, padding and margin on resize) </Par>
             </Container>
 
-            <Container hasBorder margin="5px" padding="25px" width="260px" height="120px">
+            <Container hasBorder margin="5px" padding="25px" width="220px" height="120px">
               Sized container 
               <br />
               <br />
@@ -123,15 +123,17 @@ const RowSection = () => {
         <Container hasBorder padding="10px">
           <Container paddingBottom="10px" alignment="center">Row</Container>
 
-          <Row wrap={false}>
+          <Row wrap={false} >
             <Flex span={1}>
-              <Container hasBorder padding="25px">Flex (span: 1)</Container>
+              <Container hasBorder padding="10px">Flex: 1</Container>
             </Flex>
             <Flex span={2}>
-              <Container hasBorder marginHorizontal="10px" padding="25px">Flex (span: 2)</Container>
+              <Container hasBorder marginHorizontal="10px" padding="10px">
+                Flex: 2
+              </Container>
             </Flex>
             <Flex span={3}>
-              <Container hasBorder padding="25px">Flex (span: 3)</Container>
+              <Container hasBorder padding="10px">Flex: 3</Container>
             </Flex>
           </Row>
         </Container>
@@ -194,7 +196,7 @@ const ColumnSection = () => {
 
 const FlexSection = () => (
   <Container hasBorder borderColor={theme.colors.primaryColor} padding="10px" marginLeft="10px" responsiveMarginLeft="0">
-    <Container paddingBottom="10px" alignment="center" borderColor> Rows and Columns  </Container>
+    <Container paddingBottom="10px" alignment="center" borderColor> Column  </Container>
     <Column stretchChildren fillHeight>
       <Container hasBorder padding="25px"> 
         <Flex>Flex</Flex>

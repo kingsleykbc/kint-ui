@@ -78,8 +78,9 @@ const TextSection = () => {
           </Flex>
         </Row>
 
-        <Row wrapOnlyResponsive>
-          <Flex> 
+        <Row responsiveCollapse>
+          <Flex  width="50%" mobileWidth="100%"> 
+
             {/* PARAGRAPH */}
             <Exhibit label="Par" marginVertical="20px">
               <Par>
@@ -89,8 +90,10 @@ const TextSection = () => {
               </Par>
             </Exhibit>
           </Flex>
+          
 
-          <Flex span={1} shrink={0}>
+          <Flex span={1}>
+            <Container />
             {/* PARAGRAPH */}
             <Exhibit label="DividedText" marginVertical="20px">
               <DividedText items={["These", "are", "divided", "Texts"]} />

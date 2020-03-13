@@ -168,7 +168,7 @@ const Container = (
 
         .Container:hover{
           background: ${hoverBackground};
-          transition: background linear 0.3s;
+          transition: background ${`linear`} 0.3s;
         }
 
         @media screen and (max-width: ${ responsiveWidth || "800px"}){

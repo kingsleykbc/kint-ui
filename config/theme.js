@@ -18,7 +18,7 @@ const theme = {
   
   boxShadows: {
     medShadow: "0 2px 4px rgba(0,0,0,0.2)",
-    smallShadow: "0 2px 2px rgba(0,0,0,0.2)"
+    smallShadow: "0 1px 4px rgba(0,0,0,0.15)"
   }
 };
 

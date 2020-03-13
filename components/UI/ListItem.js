@@ -3,25 +3,58 @@ import IcGo from 'react-icons/lib/md/chevron-right';
 import {Row} from './Flex';
 
 import theme from '../../config/theme';
+import Container from './Container';
 
 
 const ListItem = ({
-  icon, title, subTitle, titleWeight, titleSize, subTitleColor, hasGoButton, onClick, onGoButtonClick, 
-  hPadding, vPadding,  hasBottomBorder, hasShadow, growOnHover, goButtonIcon, iconColor, flexAlignment
+  icon,
+  title,
+  subTitle,
+  titleWeight,
+  titleSize,
+  responsiveWidth,
+  subTitleColor,
+  hasGoButton,
+  onClick,
+  onGoButtonClick,
+  iconSize,
+  iconColor,
+  hPadding,
+  vPadding,
+  hasBottomBorder,
+  hasShadow,
+  growOnHover,
+  goButtonIcon,
+  flexAlignment,
+  bottomLeft,
+  bottomRight,
+  titleColor
 }) => {
 
   /**
    * GET THE STYLES
    */
+  titleColor = titleColor || theme.colors.textColor;
+  subTitleColor = subTitleColor || theme.colors.lightText;
   flexAlignment = flexAlignment || "flex-start";
+  iconSize = iconSize || "2.5rem";
+  responsiveWidth = responsiveWidth || "1.8rem";
+
   const bottomBorder = (hasBottomBorder !== false && !hasShadow) ? `1px solid ${theme.colors.borderColor}` : "none";
   const padding = `${vPadding || "15px"}  ${(hPadding) ? hPadding : (hasShadow) ? "15px" : "0"}`;
   const boxShadow = hasShadow ? theme.boxShadows.smallShadow : "none";
   const margin = hasShadow ? "5px 0" : "0";
   const cursor = onClick ? "pointer" : "default";
-  const transform = (growOnHover) ? "scale(1.1)" : "none";
+  const transform = (growOnHover) ? "scale(1.03)" : "none";
+  const hoverBg = (onClick) ? theme.colors.highlightColor : theme.colors.backgroundColor;
+  
+  const hasBottomElements = (bottomLeft || bottomRight);
+  onClick = onClick ? onClick : undefined;
+  onGoButtonClick = (onGoButtonClick && !onClick) ? onGoButtonClick : undefined;
  
-
+  // =======================================================================
+  //  UI
+  // =======================================================================
   return (
     <div className="ListItem" onClick={onClick}>
  
@@ -32,10 +65,20 @@ const ListItem = ({
       <Row dir="column" span={1} className="titleAndSub">
         <h3> {title} </h3>
         {subTitle && <div className="subtitle">{subTitle}</div>}
+
+        {/* BOTTEM ELEMENTS (IF ANY) */}
+        {hasBottomElements &&
+          <Container marginTop="15px" width="100%">
+            <Row justify="space-between">
+              <div className="bottomLeft">{bottomLeft}</div>
+              <div className="bottomRight">{bottomRight}</div>
+            </Row>
+          </Container>
+        }
       </Row>
 
       {/* GO BUTTON */}
-      {hasGoButton && <div onClick={!onClick && onGoButtonClick} className="goIcon">{goButtonIcon || <IcGo/>}</div> }
+      {hasGoButton && <div onClick={onGoButtonClick} className="goIcon">{goButtonIcon || <IcGo/>}</div> }
 
 
       { /* STYLE ======================================================================================= */}
@@ -48,8 +91,9 @@ const ListItem = ({
           margin: ${margin};
           box-shadow: ${boxShadow};     
           cursor: ${cursor};
-          transition: ${"all linear"} 0.3s;
+          transition: ${"all linear"} 0.25s;
           align-items: ${flexAlignment};
+          background: ${theme.colors.backgroundColor};
         }
 
         .ListItem:last-child {
@@ -58,22 +102,24 @@ const ListItem = ({
 
         .ListItem:hover {
           transform: ${transform};
+          background: ${hoverBg};
         }
 
         h3{
           margin-bottom: 8px;
+          color: ${titleColor};
           font-weight: ${titleWeight || "bold"};
           font-size: ${titleSize || "1.12rem"};
         }
 
         .icon{
-          font-size: 2.5rem;
+          font-size: ${iconSize};
           margin-right: 10px;
           vertical-align: middle;
         }
 
         .subtitle {
-          color: ${subTitleColor || theme.colors.lightText};
+          color: ${subTitleColor};
         }
 
         .ListItem :global( svg *){
@@ -89,11 +135,16 @@ const ListItem = ({
           font-size: 1.3rem;
         }
 
+        .bottomLeft, .bottomRight {
+          font-size: 0.9rem;
+          color: ${theme.colors.lightText};
+          font-weight: bold;
+        }
 
         @media screen and (max-width: 800px){
           .icon {
             align-self: flex-start;
-            font-size: 1.8rem;
+            font-size: ${responsiveWidth};
           }
         }
       `}</style>

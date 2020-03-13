@@ -46,7 +46,8 @@ export const Flex = ({
 
         @media screen and (max-width: ${responsiveWidth || "800px"}){
           .Flex {
-            ${(responsiveCollapse) && `flex-direction: column; align-items: stretch;`}
+            flex-direction: ${responsiveCollapse ? "column" : dir};
+            align-items: ${responsiveCollapse ? "stretch" : align};
             width: ${mobileWidth || "100%"};
             ${wrapOnlyResponsive && "flex-wrap: wrap;"};
           }
