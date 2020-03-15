@@ -35,8 +35,6 @@ const ui = () => {
       </SectionContent>
 
       <SectionContent maxWidth="1100px" vPadding="0">
-        <FormSection />
-
         <TextSection/>
         <InfoSection/>
         <ButtonSection/>
@@ -45,11 +43,10 @@ const ui = () => {
         <NavigationSection/>
         <LayoutSection/>
         <ListSection/>
-        {/* <FormSection/> */}
+        <FormSection/>
         <ModalSection/>
         <ResultPageSection/>
         <LoaderSection/>
-        <SkeletonSection/>
         <ImageSection/>
         <CarouselSection/>
         <ThemeSection/>

@@ -5,7 +5,7 @@ import { Row, Flex } from '../UI/Flex';
 import Exhibit from '../UI/Exhibit';
 import DropDownView from '../UI/DropDownView';
 import { Par } from '../UI/TextComponents';
-import DropOptions from '../UI/DropDownComponents/DropOptions';
+import DropOptions from '../UI/DropOptions';
 import IcCloud from 'react-icons/lib/md/cloud-queue';
 import theme from '../../config/theme';
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import theme from '../../config/theme';
 
-const PageDivider = ({label, labelPosition, vPadding, borderWidth, borderColor }) => {
+const PageDivider = ({ label, labelPosition, vPadding,  borderWidth, borderColor }) => {
 
   /**
    * GET CSS

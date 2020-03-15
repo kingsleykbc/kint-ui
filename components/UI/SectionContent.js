@@ -31,7 +31,7 @@ const SectionContent = ({children, vPadding, hPadding, maxWidth, hasShadow, labe
           padding: ${(hasShadow) ? "20px" : "0"};
         }
 
-        @media screen and (max-width: 800px){            
+        @media screen and (max-width: 800px){
           .sectionContent{
             padding: ${vPadding || "12px"} ${hPadding || "12px"};
           }

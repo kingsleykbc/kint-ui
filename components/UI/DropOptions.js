@@ -1,9 +1,9 @@
 import React from 'react';
-import DropDownView from '../DropDownView';
-import ListView from '../ListView';
-import Container from '../Container';
-import { IconText } from '../TextComponents';
-import theme from '../../../config/theme';
+import DropDownView from './DropDownView';
+import ListView from './ListView';
+import Container from './Container';
+import { IconText } from './TextComponents';
+import theme from '../../config/theme';
 
 const DropOptions = ({options, origin, iconColor, color, ...props}) => {
   return (

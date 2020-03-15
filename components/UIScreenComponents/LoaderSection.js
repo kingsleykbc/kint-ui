@@ -4,6 +4,7 @@ const LoaderSection = () => {
   return (
     <div>
       LOADER SECTION
+       - Add skeleton section here 
     </div>
   );
 };

@@ -188,16 +188,13 @@ const KeyValueListSection = () => {
   ];
 
   return (
-    <div className="listItem">
       <Exhibit  label="TableListItem">
         <TableList data={data} mobileKeys={["first", "third"]} />
       </Exhibit>
-    </div>
   );
 }
 
 const TableListSection = () => (
-  <div className="listItem">
     <Exhibit label="KeyValListItem">
       <KeyValListItem item="key 1" value="value 1" />
       <KeyValListItem item="key 2" value="value 2" />
@@ -218,5 +215,4 @@ const TableListSection = () => (
       } />
 
     </Exhibit>
-  </div>
 );

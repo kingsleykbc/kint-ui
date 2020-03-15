@@ -21,7 +21,15 @@ const Exhibit = (
         
         {/* ITEM */}
         <Flex crossSpan="stretch" span={1}>
-          <Container height="100%" padding={contentPadding || "20px"} background={background} className="item" align="center">
+          <Container 
+            height="100%" 
+            padding={contentPadding || "20px"} 
+            background={background} 
+            className="item" 
+            responsivePadding="10px"
+            responsiveWidth="400px"
+            align="center"
+          >
             {children}
           </Container>
         </Flex>

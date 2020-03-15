@@ -25,3 +25,36 @@ export function slicer(word, maxLength) {
   }
   else return word;
 }
+
+/**
+ * GET SELECT OBJECT FROM VALUE 
+ */
+export function getSelectedIndexFromValue(value, options) {
+  if (!value) return null;
+
+  for (var i = 0; i < options.length; i++){
+    const option = options[i];
+    
+    if (option.value === value || option.label === value) return option.index;
+  }
+  
+  return null;
+}
+
+/**
+ * SEARCH FILTER
+ */
+export function searchfilter(needle, haystack) {
+  if (needle.trim() == "") return haystack;
+
+  let keyword = needle.toUpperCase();
+  let result = haystack.filter(({label, value}) => {
+
+    // The Custom Part
+    let labelText = label.toUpperCase();
+    if (value) labelText += ` ${value.toUpperCase()}`;
+
+    return (labelText.indexOf(keyword) > -1);
+  });
+  return result;
+}

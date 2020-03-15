@@ -4,7 +4,7 @@ import IcDown from 'react-icons/lib/md/keyboard-arrow-down';
 
 const DropDownView = ({ 
   view, dropView, initialShow, trigger, origin, padding, viewPadding, width, closeOnDropViewClick,
-  highlightOnHover, matchWidth, showArrow, arrowColor, dropdownWidth, hasBackdrop
+  highlightOnHover, matchWidth, showArrow, arrowColor, dropdownWidth, hasBackdrop, dropDownHeight
 }) => {
 
   /**
@@ -14,6 +14,8 @@ const DropDownView = ({
   padding = padding || "0 10px";
   viewPadding = viewPadding || "10px";
   origin  = origin || "bottom-left";
+  const overflowY = dropDownHeight ? "auto" : "visible";
+  dropDownHeight = dropDownHeight || "auto";
 
   arrowColor = arrowColor || theme.colors.lightestText;
   width = width || "auto";
@@ -106,7 +108,7 @@ const DropDownView = ({
         .dropIcon{
           margin-left: 10px;
           font-size: 1.5em;
-          display: inline-flex;
+          display: inline-flex;          
         }
 
         .dropIcon :global(svg *){
@@ -114,12 +116,12 @@ const DropDownView = ({
         }
 
         .dropIcon.show :global(svg){
-          transition: transform linear 0.2s;
+          transition: transform ${`linear`} 0.2s;
           transform: rotate(180deg);
         }
 
         .dropIcon.hide :global(svg){
-          transition: transform linear 0.2s;
+          transition: transform ${`linear`} 0.2s;
           transform: rotate(0deg);
         }
 
@@ -153,6 +155,8 @@ const DropDownView = ({
           background: ${theme.colors.backgroundColor};
           box-shadow: ${theme.boxShadows.medShadow};
           width: ${`${matchWidth ? "100%" : (dropdownWidth) ? dropdownWidth : "200px"}`};
+          max-height: ${dropDownHeight};
+          overflow-y: ${overflowY};
         }
         
         .dropView.show{
@@ -160,7 +164,7 @@ const DropDownView = ({
         }
 
         .dropView.hide{
-          animation: fadeOut 0.2s 1 linear forwards;          
+          animation: fadeOut 0.2s 1 ${`linear`} forwards;          
         }
 
         @keyframes fadeIn {
