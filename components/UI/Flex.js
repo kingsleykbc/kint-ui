@@ -2,8 +2,8 @@ import React from 'react';
 import classnames from 'classnames';
 
 export const Flex = ({
-  children, className, dir, justify, align, wrap, span, basis, responsiveWidth, fillHeight, height,
-  crossSpan, stretchChildren, shrink, width, mobileWidth, wrapOnlyResponsive, responsiveCollapse, alignSelf
+  children, className, dir, justify, align, wrap, span, basis, responsiveWidth, fillHeight, height, stretchResponsive,
+  crossSpan, stretchChildren, shrink, width, mobileWidth, wrapOnlyResponsive, responsiveCollapse
 }) => {
   /**
    * SETUP CSS

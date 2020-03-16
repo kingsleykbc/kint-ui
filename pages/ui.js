@@ -20,6 +20,7 @@ import NavigationSection from "../components/UIScreenComponents/NavigationSectio
 import CarouselSection from "../components/UIScreenComponents/CarouselSection";
 import ListSection from "../components/UIScreenComponents/ListSection";
 import SkeletonSection from "../components/UIScreenComponents/SkeletonSection";
+import PageDividerSection from "../components/UIScreenComponents/PageDividerSection";
 
 const ui = () => {
   return (
@@ -36,11 +37,12 @@ const ui = () => {
 
       <SectionContent maxWidth="1100px" vPadding="0">
         <TextSection/>
-        <InfoSection/>
         <ButtonSection/>
         <DropDownSection/>
         <HeaderSection/>
         <NavigationSection/>
+        <PageDividerSection/>
+        <InfoSection/>
         <LayoutSection/>
         <ListSection/>
         <FormSection/>

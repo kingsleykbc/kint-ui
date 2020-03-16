@@ -2,11 +2,13 @@ import React from 'react';
 import { slicer } from '../../functions/functions';
 import theme from '../../config/theme';
 import Container from './Container';
+import IcWarning from 'react-icons/lib/md/warning';
+import IcInfo from 'react-icons/lib/md/info-outline';
 
 // =======================================================================
 //  TEXT
 // =======================================================================
-export const Text = ({ children, wrap, slicedAt, color, fontStyle, fontSize, fontWeight, fontFamily }) => {
+export const Text = ({ children, wrap, slicedAt, color, fontStyle, fontSize, fontWeight, fontFamily, lineHeight }) => {
   const text = (slicedAt) ? slicer(children, slicedAt): children;
   
   return (
@@ -19,10 +21,11 @@ export const Text = ({ children, wrap, slicedAt, color, fontStyle, fontSize, fon
           color: ${color || theme.colors.textColor};
           font-size: ${fontSize || "1rem"};
           word-wrap: ${wrap ? "break-word" : "normal"};
-          word-break: break-all;
+          word-break: ${wrap ? "break-all" : "normal"};
           font-style:  ${fontStyle || "normal"};
           font-weight: ${fontWeight || "normal"};
           font-family: ${fontFamily || "Arial, Helvetica, sans-serif"};
+          line-height: ${lineHeight || "25px"};
         }
       `}</style>
     </span>
@@ -61,7 +64,7 @@ export const Par = ({ children, wrap, slicedAt, color, fontStyle, fontWeight, fo
 //  TEXT WITH ICON
 // =======================================================================
 export const IconText = (
-  { children, padding, icon, iconColor, iconSize, iconBack, iconBackColor, iconBackSize, ...textProps }
+  { children, padding, align, icon, iconColor, iconSize, iconBack, iconBackColor, iconBackSize, ...textProps }
 ) => {
   return (
     <div className="IconText" >
@@ -75,9 +78,13 @@ export const IconText = (
       { /* STYLE ======================================================================================= */}
       <style jsx>{`
         .IconText {
-          display:inline-flex;
-          align-items: center;
+          display: inline-flex;
+          align-items: ${align || "center"};
           padding: ${padding || "10px"};
+        }
+
+        .icon{
+          ${align === "flex-start" && "margin-top: 5px;"}
         }
 
         .icon :global(svg){
@@ -102,3 +109,23 @@ export const IconText = (
   );
 };
 
+
+/**
+ * INFO TEXT
+ */
+export const InfoText = ({ children, icon, isWarning }) => {
+  icon = (isWarning) ? <IcWarning/> : <IcInfo />;
+
+  // =======================================================================
+  //  UI
+  // =======================================================================
+  return (
+    <IconText 
+      icon={icon} align="flex-start"
+      color={theme.colors.lightText}
+      iconColor={isWarning ? theme.colors.warningColor : theme.colors.lightText}
+    >
+      {children}
+    </IconText>
+  );
+}

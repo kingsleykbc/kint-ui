@@ -7,6 +7,7 @@ const theme = {
     secondaryColor: "#5b63f5",
     successColor: "#1aeda7",
     dangerColor: "#fa2549",
+    warningColor: "#ffaf0f",
     faintColor: "#fafafc",
     
     textColor: "#000",

@@ -6,7 +6,8 @@ const PageDivider = ({ label, labelPosition, vPadding,  borderWidth, borderColor
   /**
    * GET CSS
    */
-  const left = (labelPosition == "right") ? "calc(100% - 20px)" : (labelPosition == "center") ? "calc(50% - 10px)" : "20px";
+  const left = (labelPosition === "center") ? "calc(50% - 10px)" : (labelPosition === "right") ? "auto" : "20px";
+  const right = (labelPosition === "right") ? "20px" : "auto";
 
   return (
     <div className="PageDivider"> 
@@ -35,6 +36,7 @@ const PageDivider = ({ label, labelPosition, vPadding,  borderWidth, borderColor
 
         .label{
           left: ${left};
+          right: ${right};
           color: ${theme.colors.lightestText}
         }
 

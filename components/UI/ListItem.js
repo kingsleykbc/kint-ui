@@ -37,7 +37,7 @@ const ListItem = ({
   titleColor = titleColor || theme.colors.textColor;
   subTitleColor = subTitleColor || theme.colors.lightText;
   flexAlignment = flexAlignment || "flex-start";
-  iconSize = iconSize || "2.5rem";
+  iconSize = iconSize || "2.4rem";
   responsiveWidth = responsiveWidth || "1.8rem";
 
   const bottomBorder = (hasBottomBorder !== false && !hasShadow) ? `1px solid ${theme.colors.borderColor}` : "none";
@@ -114,7 +114,7 @@ const ListItem = ({
 
         .icon{
           font-size: ${iconSize};
-          margin-right: 10px;
+          margin-right: 15px;
           vertical-align: middle;
         }
 

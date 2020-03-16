@@ -67,6 +67,7 @@ const Button = ({
       { /* STYLE ======================================================================================= */}
       <style jsx>{`
         button {
+          outline: none;
           width: ${width || "auto"};
           font-weight: bold;
           padding: ${padding};

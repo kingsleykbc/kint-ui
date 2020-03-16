@@ -211,8 +211,15 @@ const CustomInputFields = () => {
         />
         <InputField
           label="Disabled"
+          value="Text"
           disabled
         />
+
+      <InputField
+        label="Underline border type"
+        borderType="underline"
+        placeholder="Text"
+      />
 
       </Exhibit>
   );

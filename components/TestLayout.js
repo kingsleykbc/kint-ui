@@ -240,6 +240,11 @@ const TestLayout = ({children}) => {
         input[type="text"], select{
           appearance: none;
         }
+        
+        input[type="text"]:disabled, select:disabled, textarea:disabled {
+          color: ${theme.colors.lightText};
+          background: ${theme.colors.faintColor};
+        }
 
         h5{
           color: ${theme.colors.dangerColor};

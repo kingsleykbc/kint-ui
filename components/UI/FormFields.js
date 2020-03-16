@@ -11,6 +11,7 @@ export const FormikTextField = ({
   name,
   type,
   label,
+  value,
   maxLength,
   hasError,
   placeholder,
@@ -54,7 +55,7 @@ export const FormikTextField = ({
         <div className="wrapper">
           {(isRegularInput) 
           ? 
-            (type === "textarea") ? <textarea  {...fieldProps} /> : <input {...fieldProps}/>
+            (type === "textarea") ? <textarea value={value}  {...fieldProps} /> : <input value={value} {...fieldProps}/>
           :
             <Field component={(type === "textarea") ? "textarea" : "input"} {...fieldProps} />
           }
@@ -169,7 +170,9 @@ const FormFieldView = ({
   leadingIcon,
   inputIcon,  
   onInputIconClick,
-  disableInputIcon
+  disableInputIcon,
+
+  borderType
 }) => {
 
   /**
@@ -213,6 +216,11 @@ const FormFieldView = ({
         .formField :global(input), .formField :global(select), .formField :global(textarea){
           width: ${inputWidth};
           padding-left: ${paddingLeft};
+          ${(borderType === "underline") && `
+            border: none;
+            border-radius: 0;
+            border-bottom: 1px solid ${theme.colors.borderColor};
+          `};
         }
 
         .inputSection{
@@ -233,6 +241,7 @@ const FormFieldView = ({
 
         .leadingIcon{
           left: 5px;
+          z-index: -1;
         }
 
         .fieldIcon :global(svg *), .leadingIcon :global(svg *) {

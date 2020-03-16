@@ -119,7 +119,8 @@ const Select = ({
         }
 
         input {
-          width: 100%;
+          width: 100%; 
+          background: none !important;
           padding: 0;
           border: none;
           cursor: pointer;

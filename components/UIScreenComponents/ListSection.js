@@ -188,7 +188,7 @@ const KeyValueListSection = () => {
   ];
 
   return (
-      <Exhibit  label="TableListItem">
+      <Exhibit  label="TableList">
         <TableList data={data} mobileKeys={["first", "third"]} />
       </Exhibit>
   );
