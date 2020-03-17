@@ -5,6 +5,7 @@ import { Column, Row, Flex } from '../UI/Flex';
 import { Text, Par } from '../UI/TextComponents';
 import Exhibit from '../UI/Exhibit';
 import theme from '../../config/theme';
+import Spacing from '../UI/Spacing';
 
 const LayoutSection = () => {
   return (
@@ -107,6 +108,12 @@ const LayoutSection = () => {
             <FlexSection/>
           </Flex>
         </Row>
+      </Exhibit>
+
+      <Spacing/>
+
+      <Exhibit label="SidebarPage">
+        PUT SIDEBAR PAGE HERE
       </Exhibit>
     </Container>
   );

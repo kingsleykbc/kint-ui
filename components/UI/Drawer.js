@@ -2,17 +2,39 @@ import React, { useEffect, useState } from 'react';
 import Portal from './Portal';
 import theme from '../../config/theme';
 import ClickableIcon from './ClickableIcon';
+import { Column, Flex } from './Flex';
 
-const Drawer = ({ toggle, show, children, size, direction, behindHeader }) => {
+const Drawer = ({ 
+  toggle,
+  show,
+  children,
+  size,
+  responsiveSize,
+  showCancelButton,
+  direction,
+  contentPadding,
+  title,
+  bottomActions,
+  responsiveWidth,
+  bottomActionsAlignment,
+  behindHeader
+}) => {
 
   /**
    * GET THE CSS
    */
+  bottomActionsAlignment = (bottomActionsAlignment === "right")
+    ? "flex-end"
+    : (bottomActionsAlignment === "center") ? "center"
+    : "flex-start";
   direction = direction || "right";
-  size = size || "300px";
+  size = size || "350px";
+  responsiveSize = responsiveSize || size;
+  contentPadding = contentPadding || "15px";
   const isHorizontal = direction == "right" || direction == "left";
   const adjacentValues = (isHorizontal) ? "top: 0; bottom: 0;" : "left: 0; right: 0;";
   const sizeAttr = (isHorizontal) ? "width" : "height";
+  const closeIconTop = (behindHeader) ? "65px" : "10px";
 
   const [display, setDisplay] = useState("none");
   const [displayClass, setDisplayClass] = useState("hide");
@@ -37,20 +59,41 @@ const Drawer = ({ toggle, show, children, size, direction, behindHeader }) => {
 
         {/* DRAWER */}
         <div className={`drawerNav ${displayClass}`}>
+          <Column stretchChildren fillHeight>
 
-          {/* CLOSE BUTTON */}
-          <div className="closeIcon">
-            <ClickableIcon
-              icon="&times;"
-              background="#fff" 
-              hasShadow={true} 
-              onClick={toggle} 
-              fontSize="2.2rem" 
-              highlightBackground={false}
-            />
-          </div>
-          
-          {children}
+            {/* TITLE */}
+            {title && <div className="title">{title}</div>}
+
+            {/* CLOSE BUTTON */}
+            {(showCancelButton !== false) &&
+              <div className="closeIcon">
+                <ClickableIcon
+                  icon="&times;"
+                  background={theme.colors.backgroundColor} 
+                  hasShadow={true} 
+                  onClick={toggle} 
+                  fontSize="2.2rem" 
+                  highlightBackground={false}
+                />
+              </div>
+            }
+            
+            {/* MAIN CONTENT */}
+            <Flex overflow="auto" span={1}>
+              <div className="content">
+                {children}
+              </div>
+            </Flex>
+
+            {/* BOTTOM ACTIONS */}
+            {(bottomActions && bottomActions.length > 0) &&
+              <div className="bottomActions">
+                {bottomActions.map(
+                  (item, index) => <div key={`bottomAction_${index}`} className="bottomActionWidget">{item}</div>
+                )}
+              </div>
+            }
+          </Column>
         </div>
 
         {/* BACKDROP */}
@@ -58,6 +101,13 @@ const Drawer = ({ toggle, show, children, size, direction, behindHeader }) => {
 
         { /* STYLE ======================================================================================= */}
         <style jsx>{`
+          .title {
+            padding: 18px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            border-bottom: 1px solid ${theme.colors.borderColor};
+          }
+
           .drawer{            
             position: fixed;
             left:0;
@@ -84,14 +134,14 @@ const Drawer = ({ toggle, show, children, size, direction, behindHeader }) => {
           .closeIcon {
             position: absolute;
             right: 10px;
-            top: 10px;
+            top: ${closeIconTop};
           }
 
           .backdrop.show{
-            animation: fadeIn 0.2s 1 linear forwards;
+            animation: fadeIn 0.25s 1 linear forwards;
           }
           .backdrop.hide{
-            animation: fadeOut 0.2s 1 linear forwards;
+            animation: fadeOut 0.25s 1 ${`linear`} forwards;
           }
 
           @keyframes fadeIn {
@@ -119,15 +169,15 @@ const Drawer = ({ toggle, show, children, size, direction, behindHeader }) => {
             height: 100%;
             ${sizeAttr}: ${size};
             z-index: 4;
-            background: #fff;
-            padding-top: ${behindHeader ? "70px" : "10px"};
+            background: ${theme.colors.backgroundColor};
+            padding-top: ${behindHeader ? "70px" : "0"};
           }
 
           .drawerNav.show{
-            animation: slideIn 0.2s 1 linear forwards;
+            animation: slideIn 0.2s 1 ${`linear`} forwards;
           }
           .drawerNav.hide{
-            animation: slideOut 0.2s 1 linear forwards;
+            animation: slideOut 0.2s 1 ${`linear`} forwards;
           }
 
           @keyframes slideIn {
@@ -147,7 +197,45 @@ const Drawer = ({ toggle, show, children, size, direction, behindHeader }) => {
               ${direction}: -${size};
             }
           }
+
+          .content {
+            padding: ${contentPadding};
+          }
           
+          @media screen ${`and`} (max-width: ${responsiveWidth || "800px"}){
+            .drawerNav{
+              ${sizeAttr}: ${responsiveSize};
+            }
+
+            @keyframes slideIn {
+              0% {
+                ${direction}: -${responsiveSize};
+              }
+              100% {
+                ${direction}: 0;
+              }
+            }
+
+            @keyframes slideOut {
+              0% {
+                ${direction}: 0;
+              }
+              100% {
+                ${direction}: -${responsiveSize};
+              }
+            }
+          }  
+
+          .bottomActions {
+            border-top: 1px solid ${theme.colors.borderColor};
+            display: flex;
+            justify-content: ${bottomActionsAlignment};
+            padding: 15px 10px;
+          }
+          
+          .bottomActionWidget {
+            padding: 0 5px;
+          }
         `}</style>
 
       </div>

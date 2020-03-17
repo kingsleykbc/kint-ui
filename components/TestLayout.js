@@ -113,17 +113,17 @@ const TestLayout = ({children}) => {
          *  RADIO
         **/
         .radioBox:checked, .radioBox:not(:checked) {
-            position: absolute;
-            left: -9999px;
+          position: absolute;
+          left: -9999px;
         }
         .radioBox:checked + span,
         .radioBox:not(:checked) + span {
-            position: relative;
-            padding-left: 30px;
-            cursor: pointer;
-            line-height: 20px;
-            display: inline-block;
-            color: ${theme.colors.textColor};
+          position: relative;
+          padding-left: 30px;
+          cursor: pointer;
+          line-height: 20px;
+          display: inline-block;
+          color: ${theme.colors.textColor};
         }
 
         .radioBox:disabled + span{
@@ -132,60 +132,59 @@ const TestLayout = ({children}) => {
         
         .radioBox:checked + span:before,
         .radioBox:not(:checked) + span:before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 16px;
-            height: 16px;
-            border: 2px solid #cfcfe9;
-            border-radius: 100%;
+          content: '';
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 16px;
+          height: 16px;
+          border: 2px solid #cfcfe9;
+          border-radius: 100%;
         }
 
         .radioBox:checked + span:after,
         .radioBox:not(:checked) + span:after {
-            content: '';
-            width: 12px;
-            height: 12px;
-            background: ${theme.colors.primaryColor};
-            position: absolute;
-            top: 4px;
-            left: 4px;
-            border-radius: 100%;
-            transition: ${`all`} 0.2s ease;
+          content: '';
+          width: 12px;
+          height: 12px;
+          background: ${theme.colors.primaryColor};
+          position: absolute;
+          top: 4px;
+          left: 4px;
+          border-radius: 100%;
+          transition: ${`all`} 0.2s ease;
         }
 
         .radioBox:not(:checked) + span:after {
-            opacity: 0;
-            -webkit-transform: scale(0);
-            transform: scale(0);
+          opacity: 0;
+          -webkit-transform: scale(0);
+          transform: scale(0);
         }
         .radioBox:checked + span:after {
-            opacity: 1;
-            -webkit-transform: scale(1);
-            transform: scale(1);
+          opacity: 1;
+          -webkit-transform: scale(1);
+          transform: scale(1);
         }
-
                 
         /* SWITCH CHECKBOX */
         .switch{
-          position: relative !important;
-          height:12px !important;
-          width:50px !important;
-          appearance: none !important;
-          background: ${theme.colors.lightestText} !important;	
-          outline: ${`none`} !important;
+          position: relative;
+          height: 10px;
+          width: 50px;
+          appearance: none;
+          background: ${theme.colors.lightestText};	
+          outline: ${`none`};
           vertical-align: middle;
-          border-radius: 20px !important;
-          transition: 1s !important; 
-          cursor:grab !important;
-          border:none !important;
+          border-radius: 20px;
+          transition: 1s; 
+          cursor: pointer;
+          border: none;
           margin-right: 15px;
         }
 
         .switch:checked{
-          background: ${theme.colors.primaryColor} !important;
-          transition: 1s !important;
+          background: ${theme.colors.primaryColor};
+          transition: 1s;
         }
 
         .switch:before{

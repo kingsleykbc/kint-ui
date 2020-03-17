@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React,{useState, Fragment} from 'react';
 import Link from './UI/Link';
 import theme from '../config/theme';
 import Header from './UI/Header';
@@ -10,15 +10,22 @@ import IcAccount from 'react-icons/lib/md/person';
 import IcDown from 'react-icons/lib/md/keyboard-arrow-down';
 import Option from 'react-icons/lib/md/flag';
 import { Column } from './UI/Flex';
+import TextButton from './UI/TextButton';
 
 const TestHeader = () => {
+
+  // =======================================================================
+  //  UI
+  // =======================================================================
   return (
     <Header position="sticky">
       <Header.Logo>
-        <Link href="/">LOGO</Link>
+        <Link href="/">Kint UI</Link>
       </Header.Logo>
 
-      <Header.SearchBar>
+      <>
+      {
+      /* <Header.SearchBar>
         <Header.SearchInput
           placeholder="Search Items"
           suggestions={[
@@ -27,11 +34,13 @@ const TestHeader = () => {
             <Suggestion key="3" value="Suggestion 3" />
           ]}          
         />
-      </Header.SearchBar>
+      </Header.SearchBar> */
+      }
+      </>
 
-      <Header.MenuSection>
-        <HeaderItem href="/" label="Home" />
-        <HeaderItem href="/ui" label="Custom UI" />  
+      <Header.MenuSection alignment="center">     
+        <HeaderItem href="/" label="Components" />
+        <HeaderItem href="/hackernews" label="Hacker news" />  
       </Header.MenuSection>
 
       <Header.AccountSection responsiveChild={<AccountOptions/>}>
@@ -66,9 +75,9 @@ const AccountOptions = () => (
  * HEADER ITEM
  */
 const HeaderItem = ({ href, label }) => (
-  <Header.MenuItem>
+  <Header.MenuItem hasDivider={false}>
     <Link href={href} activeClassName="active">
-      <Container> {label} </Container>
+      <TextButton color={theme.colors.textColor}>{label}</TextButton>
     </Link>
 
     { /* STYLE ======================================================================================= */}

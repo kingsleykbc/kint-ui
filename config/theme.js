@@ -14,7 +14,7 @@ const theme = {
     lightText: "#807b9e",
     lightestText: "#b9b3c4",
 
-    tintColor: "rgba(30, 25, 50, 0.4)"
+    tintColor: "rgba(30, 25, 50, 0.35)"
   },
   
   boxShadows: {

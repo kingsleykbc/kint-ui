@@ -1,46 +1,61 @@
-import TestLayout from '../components/TestLayout';
-import SectionContent from '../components/UI/SectionContent';
-import axios from 'axios';
-import Error from 'next/error';
+import TestLayout from "../components/TestLayout";
+import SectionContent from "../components/UI/SectionContent";
+import Container from "../components/UI/Container";
+import { Par } from "../components/UI/TextComponents";
+import theme from "../config/theme";
 
-import React, { Component } from 'react';
-import Story from '../components/IndexComponents/StoryList';
-import StoryList from '../components/IndexComponents/StoryList';
-import Container from '../components/UI/Container';
+import ButtonSection from "../components/UIScreenComponents/ButtonSection";
+import DropDownSection from "../components/UIScreenComponents/DropDownSection";
+import HeaderSection from "../components/UIScreenComponents/HeaderSection";
+import InfoSection from "../components/UIScreenComponents/InfoSection";
+import FormSection from "../components/UIScreenComponents/FormSection";
+import TextSection from "../components/UIScreenComponents/TextSection";
+import LoaderSection from "../components/UIScreenComponents/LoaderSection";
+import ResultPageSection from "../components/UIScreenComponents/ResultPageSection";
+import ImageSection from "../components/UIScreenComponents/ImageSection";
+import LayoutSection from "../components/UIScreenComponents/LayoutSection";
+import ThemeSection from "../components/UIScreenComponents/ThemeSection";
+import ModalSection from "../components/UIScreenComponents/ModalSection";
+import NavigationSection from "../components/UIScreenComponents/NavigationSection";
+import CarouselSection from "../components/UIScreenComponents/CarouselSection";
+import ListSection from "../components/UIScreenComponents/ListSection";
+import SkeletonSection from "../components/UIScreenComponents/SkeletonSection";
+import PageDividerSection from "../components/UIScreenComponents/PageDividerSection";
 
-class Index extends Component {
-  static async getInitialProps(){
-    try{
-      const {data:stories} = await axios.get("https://node-hnapi.herokuapp.com/news?page=1");
-      return {stories}
-    }
-    catch(e){
-      return {stories: "Error"};
-    }
-  }
+const ui = () => {
+  return (
+    <TestLayout>
+      <SectionContent vPadding="30px">
+        <br/>
+        <h1>Custom UI</h1>
+        <Container marginTop="15px">
+          <Par color={theme.colors.lightText}>
+            Here are some custom UI elements to use in your applications.
+          </Par>
+        </Container>
+      </SectionContent>
 
-  render() {
-    const {stories} = this.props;
+      <SectionContent maxWidth="1200px" vPadding="0">
+        <ModalSection />
+        <TextSection/>
+        <ButtonSection/>
+        <DropDownSection/>
+        <HeaderSection/>
+        <NavigationSection/>
+        <PageDividerSection/>
+        <InfoSection/>
+        <LayoutSection/>
+        <ListSection/>
+        <FormSection/>
+        {/* <ModalSection/> */}
+        <ResultPageSection/>
+        <LoaderSection/>
+        <ImageSection/>
+        <CarouselSection/>
+        <ThemeSection/>
+      </SectionContent>      
+    </TestLayout>
+  );
+};
 
-    if (stories =="Error") return <Error statusCode={503}/>
-
-    // =======================================================================
-    //  UI
-    // =======================================================================
-    return (
-      <TestLayout>
-        <SectionContent vPadding="0">
-          <Container marginTop="25px">
-            <h1>Welcome to Hacker News</h1>
-          </Container>
-        </SectionContent>
-        
-        <SectionContent label={"Posts"}>
-          <StoryList stories={stories}/>
-        </SectionContent>
-      </TestLayout>
-    );
-  }
-}
-
-export default Index;
+export default ui;

@@ -7,8 +7,10 @@ import Container from './Container';
 
 const Button = ({ 
   label, onClick, isLoading, rounded, disabled, borderRadius, icon, hasShadow, iconPosition, iconColor, className,
-  filled, color, textColor, hoverColor, width, slideDirection, loadingText, showTextOnLoad, hPadding, vPadding
+  filled, color, textColor, hoverColor, width, slideDirection, loadingText, showTextOnLoad, hPadding, vPadding, children
 }) => {
+  label = label || children;
+  
   /**
    * ANIMATION SLIDE POSITION
    */

@@ -2,13 +2,14 @@ import React from 'react';
 import classnames from 'classnames';
 
 export const Flex = ({
-  children, className, dir, justify, align, wrap, span, basis, responsiveWidth, fillHeight, height, stretchResponsive,
-  crossSpan, stretchChildren, shrink, width, mobileWidth, wrapOnlyResponsive, responsiveCollapse
+  children, className, dir, justify, align, wrap, span, basis, responsiveWidth, fillHeight, height,
+  crossSpan, stretchChildren, shrink, width, mobileWidth, wrapOnlyResponsive, responsiveCollapse, overflow
 }) => {
   /**
    * SETUP CSS
    */
   let flexAttr = "";
+  overflow = overflow || "visible";
   
   if (dir){
     flexAttr = "display: flex;";
@@ -19,6 +20,7 @@ export const Flex = ({
       let temp = align;
       align = (stretchChildren) ? "stretch" : justify;
       justify = temp;
+      wrap = wrap || false;
     }
   }
   // =======================================================================
@@ -36,6 +38,7 @@ export const Flex = ({
           align-items: ${align};
           align-self: ${crossSpan || "stretch"};
           justify-content: ${justify};
+          overflow: ${overflow};
           width: ${width || "auto"};
           flex-grow: ${span || 0};
           flex-shrink: ${(shrink == 0) ? 0 : 1};

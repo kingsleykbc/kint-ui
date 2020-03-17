@@ -33,7 +33,7 @@ const StatusSection = () => {
   }
 
   return (
-    <Row wrapOnlyResponsive>
+    <Row wrapOnlyResponsive responsiveWidth="900px">
       <Flex span={1} shrink={0}>
         <Exhibit label="StatusText">
           <Container height="calc(100% - 60px)" marginBottom="20px" overflow="auto">
