@@ -38,7 +38,7 @@ const Lightbox = ({
     }
     else {
       setDisplayClass("hide");
-      timeOut = setTimeout(() => setDisplay("none"), 200);
+      timeOut = setTimeout(() => setDisplay("none"), 250);
     }
     return () => clearTimeout(timeOut);
   }, [show]);
@@ -52,10 +52,10 @@ const Lightbox = ({
     : (bottomActionsAlignment === "center") ? "center"
     : "flex-end";
 
-  const maxHeight = height ? height : (isFullScreen) ? "none" : "400px";
-  const maxWidth = width ? width : (isFullScreen) ? "none" : "800px";
-  const mainWidth = (autoWidth) ? "auto" : (isFullScreen) ? "100%" : "90%";
-  const mainHeight = (autoHeight) ? "auto" : (isFullScreen) ? "100%" : "90%";
+  const maxHeight = height ? height : (isFullScreen || autoHeight) ? "none" : "400px";
+  const maxWidth = width ? width : (isFullScreen || autoWidth) ? "none" : "800px";
+  const mainWidth = (isFullScreen) ? "100%" : (autoWidth) ? "auto" :"90%";
+  const mainHeight = (isFullScreen) ? "100%" : (autoHeight) ? "auto" : "90%";
   const borderRadius = (isFullScreen) ? "0" : "5px";
 
   const mobileMaxWidth = fullScreenInResponsive ? "none" : maxWidth;
@@ -102,9 +102,7 @@ const Lightbox = ({
 
             {/* CONTENT */}
             <Flex span={1} overflow="auto">
-              <div className="content">
-                {children}
-              </div>
+              <div className="content"> {children} </div>
             </Flex>
 
             {/* BOTTOM ACTIONS */}
@@ -218,12 +216,13 @@ const Lightbox = ({
           .bottomActions {
             border-top: 1px solid ${theme.colors.borderColor};
             display: flex;
+            flex-wrap: wrap;
             justify-content: ${bottomActionsAlignment};
-            padding: 10px;
+            padding: 5px 10px;
           }
           
           .bottomActionWidget {
-            padding: 0 5px;
+            padding: 5px;
           }
 
           @media screen ${`and`} (max-width: ${responsiveWidth || "800px"}){

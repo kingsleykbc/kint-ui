@@ -1,39 +1,64 @@
 import React from 'react';
 import theme from '../../config/theme';
 
-const CircularLoader = ({ width, color, light }) => {
-  width = width || "40px";
+const CircularLoader = ({ size, color, color2, singleBorder }) => {
+  size = size || "5.5rem";
   color = color || theme.colors.primaryColor;
+  color2 = color2 || color;
+  const borderSize = singleBorder ? "0.2em" : "0.3em";
+  const borderStyle = singleBorder ? "solid" : "double";
 
   return (
-    <div>
-      {(light) ? <span className="middle inner"></span>
-        : <span><span className="middle"><span className="inner"></span></span></span>
-      }
+    <div className="CircularLoader">
+      <div className='loader'></div>
 
       { /* STYLE ======================================================================================= */}
       <style jsx>{`
-        .inner {
-          width: ${width};
-          height: ${width};
+        .CircularLoader{
+          text-align:  center;
         }
-
-        .middle{
-          border-top-color: transparent;
-          animation: spin 2s linear infinite;
-        }
-
-        span{
+              
+        .loader {
           display: inline-block;
+          width: 1em;
+          height: 1em;
+          font-size: ${size};
           vertical-align: middle;
-          border-radius: 50%;
-          border: 4px solid ${color};
+          position: relative;
+        }
+        .loader:before, .loader:after {
+          content: "";
+          top: 0;
+          display: block;
+          width: 1em;
+          height: 1em;
+          position: absolute;
+          border-width: ${borderSize};
+          border-style: ${borderStyle};
+          border-color: transparent;
+          box-sizing: border-box;
+          border-radius: 1em;
+          animation: spin 1s infinite;
+        }
+        .loader:after {
+          left: 0;
+          border-left-color: ${color};
+          border-top-color: ${color2};
+        }
+        .loader:before {
+          right: 0;
+          border-right-color: ${color};
+          animation-delay: -0.25s;
+          border-bottom-color: ${color2};
+
         }
 
         @keyframes spin {
-          0% { transform: rotate(0deg); }
-          100% { transform: rotate(360deg); }
+          from {
+            transform: rotate(360deg);
+          }
         }
+
       `}</style>
     </div>
   );

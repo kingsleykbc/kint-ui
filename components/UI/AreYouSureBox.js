@@ -54,7 +54,6 @@ class AreYouSureBox extends PureComponent {
         contentPadding="0"
         width="400px"
         autoHeight
-        showCancelButton={false}
       >
         <h3>{this.title}</h3>
         <div className="message"> <Par> {this.message} </Par> </div>

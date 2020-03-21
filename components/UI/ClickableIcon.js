@@ -2,7 +2,7 @@ import React from 'react';
 import theme from '../../config/theme';
 
 const ClickableIcon = (
-  { icon, color, onClick, fontSize, background, hasBorder, hasShadow, borderColor, filled, highlightBackground }
+  { icon, color, onClick, size, iconSize, background, hasBorder, hasShadow, borderColor, filled, highlightBackground }
 ) => {
   highlightBackground = !(highlightBackground === false);
   const mainColor = color || theme.colors.primaryColor;
@@ -11,6 +11,7 @@ const ClickableIcon = (
   const border = hasBorder ? `2px solid ${mainBorderColor}` : "none";
   const iconBackground = filled ? mainColor : (background) ? background : "transparent";
   const iconColor = filled ? "#fff" : mainColor;
+  size = size || "40px";
 
   return (
     <div className="ClickableIcon">
@@ -21,22 +22,18 @@ const ClickableIcon = (
         .iconCover {
           border: ${border};
           border-radius: 5px;
-          width: 40px;
-          height: 40px;
+          width: ${size};
+          height: ${size};
           align-items: center;
           display: flex;
           color: ${iconColor};
           overflow: hidden;
           justify-content: center;
           cursor: pointer;
-          font-size: ${fontSize || "1.5rem"};
+          font-size: ${iconSize || "1.5rem"};
           background: ${iconBackground};
           box-shadow: ${hasShadow ? theme.boxShadows.medShadow : "none"};
           transition: background linear 0.3s;
-        }
-        
-        .iconCover :global(svg){
-          font-size: ${fontSize || "1.5rem"};
         }
         
         .iconCover :global(svg *){

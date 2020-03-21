@@ -60,7 +60,8 @@ const Container = (
     overflow,
     hasShadow,
     shadowSize,
-    onClick
+    onClick,
+    position
   }
 ) => {
   
@@ -163,6 +164,7 @@ const Container = (
           overflow: ${overflow || "visible"};
           ${onClick && "cursor: pointer;"};
           background: ${background || "none"};
+          position: ${position || "static"};
           ${borders}
         }
 

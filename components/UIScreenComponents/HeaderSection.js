@@ -7,6 +7,7 @@ import Header from '../UI/Header';
 import TextButton from '../UI/TextButton';
 import { IconText } from '../UI/TextComponents';
 import Icon from 'react-icons/lib/md/assistant-photo';
+import Spacing from '../UI/Spacing';
 
 const HeaderSection = () => {
   return (
@@ -29,6 +30,25 @@ const HeaderSection = () => {
           <IconText icon={<Icon/>}>
             Edge Button
           </IconText>
+        </Header.AccountSection>
+      </Header>
+
+      <Spacing/>
+
+      {/* REGULAR HEADER */}
+      <Header position="static" ribbonSection="Ribbon Section">
+        <Header.Logo>With ribbon section </Header.Logo>
+
+        <Header.MenuSection alignment="center">
+          <TextButton padding="10px" color={theme.colors.textColor}>Item 1</TextButton>
+          <TextButton padding="10px" color={theme.colors.textColor}>Item 2</TextButton>
+          <TextButton padding="10px" color={theme.colors.textColor}>Item 3</TextButton>
+        </Header.MenuSection>
+
+        <Header.AccountSection>
+          <IconText icon={<Icon />}>
+            Edge Button
+        </IconText>
         </Header.AccountSection>
       </Header>
 

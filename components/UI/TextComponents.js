@@ -8,7 +8,7 @@ import IcInfo from 'react-icons/lib/md/info-outline';
 // =======================================================================
 //  TEXT
 // =======================================================================
-export const Text = ({ children, wrap, slicedAt, color, fontStyle, fontSize, fontWeight, fontFamily, lineHeight }) => {
+export const Text = ({ children, wrap, slicedAt, color, fontStyle, fontSize, fontWeight, fontFamily, lineHeight, alignment }) => {
   const text = (slicedAt) ? slicer(children, slicedAt): children;
   
   return (
@@ -26,6 +26,7 @@ export const Text = ({ children, wrap, slicedAt, color, fontStyle, fontSize, fon
           font-weight: ${fontWeight || "normal"};
           font-family: ${fontFamily || "Arial, Helvetica, sans-serif"};
           line-height: ${lineHeight || "25px"};
+          text-align: ${alignment || "inherit"};
         }
       `}</style>
     </span>
@@ -36,7 +37,7 @@ export const Text = ({ children, wrap, slicedAt, color, fontStyle, fontSize, fon
 // =======================================================================
 //  PARAGRAPHS
 // =======================================================================
-export const Par = ({ children, wrap, slicedAt, color, fontStyle, fontWeight, fontSize, lineHeight }) => {
+export const Par = ({ children, wrap, slicedAt, color, fontStyle, fontWeight, fontSize, lineHeight, alignment }) => {
   const text = (slicedAt) ? slicer(children, slicedAt) : children;
 
   return (
@@ -53,6 +54,7 @@ export const Par = ({ children, wrap, slicedAt, color, fontStyle, fontWeight, fo
           word-break: ${wrap ? "break-all" : "normal"};
           font-style:  ${fontStyle || "normal"};
           font-weight: ${fontWeight || "normal"};
+          text-align: ${alignment || "inherit"};
         }
       `}</style>
     </p>

@@ -7,7 +7,7 @@ import Container from './UI/Container';
 import { IconText } from './UI/TextComponents';
 
 import IcAccount from 'react-icons/lib/md/person';
-import IcDown from 'react-icons/lib/md/keyboard-arrow-down';
+import IcUI from 'react-icons/lib/md/spa';
 import Option from 'react-icons/lib/md/flag';
 import { Column } from './UI/Flex';
 import TextButton from './UI/TextButton';
@@ -19,8 +19,10 @@ const TestHeader = () => {
   // =======================================================================
   return (
     <Header position="sticky">
-      <Header.Logo>
-        <Link href="/">Kint UI</Link>
+      <Header.Logo>        
+        <Link href="/">
+          <IconText icon={<IcUI/>} fontWeight="bold"> Kint UI </IconText>
+        </Link>
       </Header.Logo>
 
       <>

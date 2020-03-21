@@ -166,6 +166,22 @@ const ButtonSection = () => {
                 <Container padding="5px" />
 
                 <Row>
+                  <ClickableIcon icon={<IcPower />} hasShadow />
+                  <Container padding="5px" />
+                  <Text>With shadow</Text>
+                </Row>
+
+                <Container padding="5px" />
+
+                <Row>
+                  <ClickableIcon icon={<IcPower />} iconSize="2rem" size="3rem" hasBorder />
+                  <Container padding="5px" />
+                  <Text>Sized</Text>
+                </Row>
+
+                <Container padding="5px" />
+
+                <Row>
                   <ClickableIcon icon={<IcPower />} hasBorder borderColor={theme.colors.textColor} />
                   <Container padding="5px" />
                   <Text>With styled border</Text>

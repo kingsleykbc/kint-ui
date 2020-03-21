@@ -10,10 +10,13 @@ import { Par } from '../UI/TextComponents';
 import AreYouSureBox from '../UI/AreYouSureBox';
 import Drawer from '../UI/Drawer';
 import theme from '../../config/theme';
+import SnackbarMessage from '../UI/Snackbar';
+import IcCustomIcon from 'react-icons/lib/md/access-alarm';
+import Tooltip from '../UI/Tooltip';
 
 const ModalSection = () => {
   return (
-    <div>
+    <Container overflow="hidden">
       <PageDivider label="Modal Section"/>
       <Row>
         <Flex span={1}>
@@ -26,26 +29,27 @@ const ModalSection = () => {
 
       <Spacing />
 
-      <Row>
-        <Flex span={1}>
-          <Exhibit label="AreYouSureBox">
-            <AreYouSureSection/>
-          </Exhibit>
+      <Row responsiveCollapse responsiveWidth="900px" wrap={false}>
+        <Flex span={2} shrink={0} basis="50%">
+          <Exhibit label="Snackbar"><SnackBarSection /></Exhibit>
         </Flex>
-        <Column fillHeight span={1}>
-          <Flex span={1}>
-            <Exhibit label="Snackbar"><SnackBarSection /></Exhibit>
-          </Flex>
-          <Flex span={1}>
-            <Exhibit label="Tooltip"><ToolTipSection /></Exhibit>
-          </Flex>
-        </Column>
+
+        <Flex span={0} mobileWidth="100%" responsiveWidth="900px">
+          <Column fillHeight span={1} stretchChildren>
+            <Flex >
+              <Exhibit label="AreYouSureBox"> <AreYouSureSection /> </Exhibit>            
+            </Flex>
+            <Flex span={1}>
+              <Exhibit label="Tooltip"><ToolTipSection /></Exhibit>
+            </Flex>
+          </Column>
+        </Flex>
       </Row>
 
       <Spacing />
       <Spacing />
 
-    </div>
+    </Container>
   );
 };
 
@@ -105,11 +109,7 @@ const LightBoxSection = () => {
         show={showLB2} 
         toggle={toggleLB2} 
         title="Lightbox Title"
-        bottomActions={[
-          <Button label="Action 1" />,
-          <Button label="Action 2" filled />
-        ]}
-      > 
+        bottomActions={[ <Button label="Action 1" />, <Button label="Action 2" filled /> ]}> 
         <p>
           Lightbox with <b>title</b>, and <b>bottom actions</b>.
         </p>
@@ -145,10 +145,9 @@ const AreYouSureSection = () => {
   return (
     <div>
       <Par> Click the button below to perform an action. </Par>
-      <Spacing padding="20px 0">
+      <Spacing padding="20px 0 0 0">
         <Button onClick={handleAlert}>Show alert box</Button>
       </Spacing>
-
       <AreYouSureBox ref={lbRef} />      
     </div>
   )
@@ -158,8 +157,90 @@ const AreYouSureSection = () => {
  * LIGHTBOX SECRTOPN
  */
 const SnackBarSection = () => {
+  const basicRef = useRef(null);
+  const successRef = useRef(null);
+  const errorRef = useRef(null);
+
+  // =======================================================================
+  //  UI
+  // =======================================================================
   return (
-    <div>SNACKBAR ? SECTION</div>
+    <Row>
+      <Flex span={1}>
+        <Container>
+          <Container hasBorder borderDirections="b" paddingVertical="10px">
+            <Row justify="space-between">
+              <span>Basic snackbar</span>
+              <Button onClick={() => basicRef.current.openSnackbar({
+                message: "Basic snackbar"
+              })} label="Open" />
+            </Row>
+          </Container>
+
+          <Container hasBorder borderDirections="b" paddingVertical="10px">
+            <Row justify="space-between">
+              <span>Bottom snackbar</span>
+              <Button onClick={() => basicRef.current.openSnackbar({
+                position: "bottom",
+                message: "Bottom snackbar"
+              })} label="Open" />
+            </Row>
+          </Container>
+
+          <Container paddingVertical="10px">
+            <Row justify="space-between">
+              <span>Colored snackbar</span>
+              <Button onClick={() => basicRef.current.openSnackbar({
+                color: theme.colors.secondaryColor,
+                icon: <IcCustomIcon/>,
+                message: "Colored snackbar with custom Icon"
+              })} label="Open" />
+            </Row>
+          </Container>
+        </Container>
+      </Flex>
+
+      <Flex span={1}>        
+        <Container marginLeft="20px" responsiveMarginLeft="0" responsiveWidth="1000px">
+          <Container hasBorder borderDirections="b" paddingVertical="10px">
+            <Row justify="space-between">
+              <span>Success snackbar</span>
+              <Button 
+                onClick={() => successRef.current.openSnackbar({
+                  message: "Success Snackbar", 
+                  type: "success"
+                })} label="Open" />
+            </Row>
+          </Container>
+
+          <Container hasBorder borderDirections="b" paddingVertical="10px">
+            <Row justify="space-between">
+              <span>Error snackbar</span>
+              <Button
+                onClick={() => basicRef.current.openSnackbar({
+                  message: "Error Snackbar",
+                  type: "error"
+                })} label="Open" />
+            </Row>
+          </Container>
+
+          <Container paddingVertical="10px">
+            <Row justify="space-between">
+              <span>Warning snackbar</span>
+              <Button
+                onClick={() => basicRef.current.openSnackbar({
+                  message: "Warning Snackbar",
+                  type: "warning"
+                })} label="Open" />
+            </Row>
+          </Container>
+        </Container>      
+      </Flex>
+
+      <SnackbarMessage ref={basicRef} />
+      <SnackbarMessage ref={successRef} />
+      <SnackbarMessage ref={errorRef} />
+    </Row>
   )
 }
 
@@ -168,7 +249,16 @@ const SnackBarSection = () => {
  */
 const ToolTipSection = () => {
   return (
-    <div>TOOLTIP  SECTION</div>
+    <div>    
+      <Par>
+        This is a sentence that has variout tooltips. 
+        Tooltips can be displayed at the: 
+        
+        <br/><br/>
+        <Tooltip label="Top" position="top" >top</Tooltip>, <Tooltip label="Bottom" position="bottom">bottom</Tooltip>, <Tooltip position="left" label="Left">left</Tooltip> or <Tooltip position="right" label="Right">right</Tooltip>. 
+        It can also be <Tooltip color={theme.colors.secondaryColor} label="Remove all instannces of the word help in the dictionay" width="200px" mobileWidth="auto">colored</Tooltip>.
+      </Par> 
+    </div>
   )
 }
 
@@ -224,7 +314,7 @@ const DrawerSection = () => {
         </Row>
       </Container>
 
-      <Container paddingVertical="10px" marginVertical="12px" hasBorder borderDirections="b"> Directional </Container>
+      <Container paddingVertical="10px" marginVertical="12px" hasBorder borderDirections="b"> With custom Direction </Container>
       <Row>
         <Button textColor={theme.colors.textColor}  onClick={toggleLB5}>Left</Button>
         <Spacing padding="0 10px">

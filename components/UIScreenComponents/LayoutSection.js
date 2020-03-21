@@ -6,6 +6,8 @@ import { Text, Par } from '../UI/TextComponents';
 import Exhibit from '../UI/Exhibit';
 import theme from '../../config/theme';
 import Spacing from '../UI/Spacing';
+import SidebarPage from '../UI/SidebarPage';
+import TextList from '../UI/TextList';
 
 const LayoutSection = () => {
   return (
@@ -113,7 +115,25 @@ const LayoutSection = () => {
       <Spacing/>
 
       <Exhibit label="SidebarPage">
-        PUT SIDEBAR PAGE HERE
+        <Container hasShadow overflow="hidden">
+          <SidebarPage>
+            <SidebarPage.Sidebar height="400px" responsiveWidth="0">
+              <b>Sidebar</b>
+
+              <TextList items={["Item 1", "Item 2", "Item 3"]}/>
+            </SidebarPage.Sidebar>
+
+            <SidebarPage.Page>
+              <Container marginTop="60px" marginBottom="20px">
+                <b>PAGE</b>
+              </Container>
+
+              <Par>
+                This is the page portion of the component. 
+              </Par>
+            </SidebarPage.Page>
+          </SidebarPage>
+        </Container>
       </Exhibit>
     </Container>
   );

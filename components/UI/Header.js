@@ -12,7 +12,7 @@ import SearchInput from './HeaderComponents/SearchInput';
 
 export default class Header extends Component {
   render() {
-    const {children, hPadding, color, vPadding, hasShadow, position} = this.props;
+    const {children, ribbonSection, hPadding, color, vPadding, hasShadow, position} = this.props;
 
     /**
      * GET THE CSS
@@ -22,24 +22,37 @@ export default class Header extends Component {
 
     return (
       <div className="Header">
-        <Row className="HeaderInner" span={1}>{children}</Row>
+        {ribbonSection && <div className="ribbonSection">{ribbonSection}</div>}        
+        <div className="HeaderWrap">
+          <Row className="HeaderInner" span={1}>{children}</Row>
+        </div>
         <style jsx>{`
           .Header {
-            display: flex;
-            align-items: center;
-            z-index: 5;
+            position: ${position || "static"} !important;
             width: 100%;
-            position: ${position || "static"};
             top:0;
+            z-index: 5;
             left:0;
-            height: 60px !important;
-            background: ${color ? color : theme.colors.backgroundColor};
-            padding: ${padding};
             box-shadow: ${boxShadow};
           }
 
-        `}</style>
-        
+          .HeaderWrap {
+            height: 60px !important;
+            display: flex;
+            align-items: center;
+            z-index: 5;
+            background: ${color ? color : theme.colors.backgroundColor};
+            padding: ${padding};
+          }
+
+          .ribbonSection {
+            background: ${theme.colors.primaryColor};
+            color: #fff;
+            padding: 10px 20px;
+            font-weight: bold;
+          }
+
+        `}</style>          
       </div>
     );
   }

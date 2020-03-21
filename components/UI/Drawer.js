@@ -138,10 +138,10 @@ const Drawer = ({
           }
 
           .backdrop.show{
-            animation: fadeIn 0.25s 1 linear forwards;
+            animation: fadeIn 0.2s 1 linear forwards;
           }
           .backdrop.hide{
-            animation: fadeOut 0.25s 1 ${`linear`} forwards;
+            animation: fadeOut 0.2s 1 ${`linear`} forwards;
           }
 
           @keyframes fadeIn {
@@ -170,6 +170,7 @@ const Drawer = ({
             ${sizeAttr}: ${size};
             z-index: 4;
             background: ${theme.colors.backgroundColor};
+            max-width: 100%;
             padding-top: ${behindHeader ? "70px" : "0"};
           }
 
@@ -202,7 +203,7 @@ const Drawer = ({
             padding: ${contentPadding};
           }
           
-          @media screen ${`and`} (max-width: ${responsiveWidth || "800px"}){
+          @media screen ${`and`} (max-width: ${responsiveWidth || "700px"}){
             .drawerNav{
               ${sizeAttr}: ${responsiveSize};
             }
@@ -229,12 +230,13 @@ const Drawer = ({
           .bottomActions {
             border-top: 1px solid ${theme.colors.borderColor};
             display: flex;
+            flex-wrap: wrap;
             justify-content: ${bottomActionsAlignment};
-            padding: 15px 10px;
+            padding: 10px;
           }
           
           .bottomActionWidget {
-            padding: 0 5px;
+            padding: 5px;
           }
         `}</style>
 

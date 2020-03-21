@@ -53,7 +53,7 @@ const Button = ({
   onClick = (loadingOrDisabled) ? null : onClick;
 
   const loader = (text) 
-    ? <Container marginRight="10px"><CircularLoader color="#fff" width="20px" light/></Container>
+    ? <Container marginRight="10px"><CircularLoader singleBorder color="#fff" size="1rem" light/></Container>
     : <DotLoader dotSize="10px" color="#fff" />;
 
   // =======================================================================

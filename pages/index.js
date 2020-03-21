@@ -21,6 +21,8 @@ import CarouselSection from "../components/UIScreenComponents/CarouselSection";
 import ListSection from "../components/UIScreenComponents/ListSection";
 import SkeletonSection from "../components/UIScreenComponents/SkeletonSection";
 import PageDividerSection from "../components/UIScreenComponents/PageDividerSection";
+import HorizontalScrollMenuSection from "../components/UIScreenComponents/HorizontalScrollMenuSection";
+import Spacing from "../components/UI/Spacing";
 
 const ui = () => {
   return (
@@ -36,7 +38,7 @@ const ui = () => {
       </SectionContent>
 
       <SectionContent maxWidth="1200px" vPadding="0">
-        <ModalSection />
+        <ImageSection />
         <TextSection/>
         <ButtonSection/>
         <DropDownSection/>
@@ -46,14 +48,17 @@ const ui = () => {
         <InfoSection/>
         <LayoutSection/>
         <ListSection/>
+        <HorizontalScrollMenuSection />
         <FormSection/>
-        {/* <ModalSection/> */}
-        <ResultPageSection/>
+        {/* <ImageSection/> */}
         <LoaderSection/>
-        <ImageSection/>
+        <ModalSection/>
         <CarouselSection/>
+        <ResultPageSection/>
         <ThemeSection/>
-      </SectionContent>      
+      </SectionContent>     
+
+      <Spacing padding="50px"/>
     </TestLayout>
   );
 };
