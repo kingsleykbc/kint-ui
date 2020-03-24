@@ -211,6 +211,7 @@ const Lightbox = ({
 
           .content {
             padding: ${contentPadding};
+            height: 100%;
           }
 
           .bottomActions {

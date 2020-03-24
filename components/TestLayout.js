@@ -10,12 +10,17 @@ Router.onRouteChangeComplete = () => NProgress.done();
 Router.onRouteChangeError = () => NProgress.done();
 
 
-const TestLayout = ({children}) => {
+const TestLayout = ({head, children}) => {
+  head = head || {};
 
+  // =======================================================================
+  //  UI
+  // =======================================================================
   return (
     <div>
       <Head>
-        <title>The title</title>
+        <title>{head.title}</title>
+        <meta name="description" content={head.description}/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css"/>
       </Head>
       <TestHeader/>
@@ -38,6 +43,7 @@ const TestLayout = ({children}) => {
           list-style: none;
           text-decoration: none;
           font-family: Arial, Helvetica, sans-serif;
+          font-display: block;
         }
 
         html{
@@ -215,6 +221,7 @@ const TestLayout = ({children}) => {
           outline: none;
           height: 42px;
           background: none;
+          appearance: none;
           transition: ${`all linear`} 0.2s;
         }
 
@@ -234,10 +241,6 @@ const TestLayout = ({children}) => {
         
         input.hasError, select.hasError {
           border-color: ${theme.colors.dangerColor};
-        }
-
-        input[type="text"], select{
-          appearance: none;
         }
         
         input[type="text"]:disabled, select:disabled, textarea:disabled {

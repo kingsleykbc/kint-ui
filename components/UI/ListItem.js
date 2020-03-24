@@ -16,6 +16,7 @@ const ListItem = ({
   subTitleColor,
   hasGoButton,
   onClick,
+  isClickable,
   onGoButtonClick,
   iconSize,
   iconColor,
@@ -39,14 +40,15 @@ const ListItem = ({
   flexAlignment = flexAlignment || "flex-start";
   iconSize = iconSize || "2.4rem";
   responsiveWidth = responsiveWidth || "1.8rem";
+  isClickable = isClickable || onClick;
 
   const bottomBorder = (hasBottomBorder !== false && !hasShadow) ? `1px solid ${theme.colors.borderColor}` : "none";
   const padding = `${vPadding || "15px"}  ${(hPadding) ? hPadding : (hasShadow) ? "15px" : "0"}`;
   const boxShadow = hasShadow ? theme.boxShadows.smallShadow : "none";
   const margin = hasShadow ? "5px 0" : "0";
-  const cursor = onClick ? "pointer" : "default";
+  const cursor = isClickable ? "pointer" : "default";
   const transform = (growOnHover) ? "scale(1.03)" : "none";
-  const hoverBg = (onClick) ? theme.colors.highlightColor : theme.colors.backgroundColor;
+  const hoverBg = (isClickable && !growOnHover) ? theme.colors.highlightColor : theme.colors.backgroundColor;
   
   const hasBottomElements = (bottomLeft || bottomRight);
   onClick = onClick ? onClick : undefined;
@@ -96,10 +98,6 @@ const ListItem = ({
           background: ${theme.colors.backgroundColor};
         }
 
-        .ListItem:last-child {
-          border-bottom: ${"none"} !important;
-        }
-
         .ListItem:hover {
           transform: ${transform};
           background: ${hoverBg};
@@ -123,7 +121,7 @@ const ListItem = ({
         }
 
         .ListItem :global( svg *){
-          color: ${iconColor || theme.colors.primaryColor} !important;
+          fill: ${iconColor || theme.colors.primaryColor};
           vertical-align: middle;
         }
 

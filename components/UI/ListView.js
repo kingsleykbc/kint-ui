@@ -1,10 +1,16 @@
 import React from 'react';
 
-const ListView = ({ component: Component, keyPrefix, data, ...itemProps}) => {
+const ListView = ({ component: Component, keyAttribute, keyPrefix, data, ...itemProps}) => {
   keyPrefix = keyPrefix || "";
 
+
   const items = (data && data.length > 0)
-    ? data.map((item, index) => <Component  key={`${keyPrefix}_${index}`} {...item} {...itemProps}/>)
+    ? data.map((item, index) => {
+      const key = keyAttribute ? item[keyAttribute] : `${keyPrefix}_${index}`;
+      
+      return <Component  key={key} {...item} {...itemProps}/>
+    })
+      
     : [];
 
   return  <div> {items} </div>

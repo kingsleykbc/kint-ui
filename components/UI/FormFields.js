@@ -245,12 +245,12 @@ const FormFieldView = ({
         }
 
         .fieldIcon :global(svg *), .leadingIcon :global(svg *) {
-          color: ${theme.colors.lightText};
+          fill: ${theme.colors.lightText};
 
         }
 
         .fieldIcon:hover, .fieldIcon:hover :global(svg *){
-          color: ${theme.colors.textColor} !important;
+          fill: ${theme.colors.textColor} !important;
         }
 
         .errorSection{

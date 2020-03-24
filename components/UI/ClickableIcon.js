@@ -37,7 +37,7 @@ const ClickableIcon = (
         }
         
         .iconCover :global(svg *){
-          color: ${iconColor};
+          fill: ${iconColor};
         }
 
         .iconCover:hover{
@@ -47,7 +47,7 @@ const ClickableIcon = (
         }
 
         .iconCover:hover :global(svg *){
-          color: ${highlightBackground ? "#fff" : "#000" };
+          fill: ${highlightBackground ? "#fff" : "#000" };
         }
       `}</style>
     </div>

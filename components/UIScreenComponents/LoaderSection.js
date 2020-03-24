@@ -85,15 +85,15 @@ const LoaderSection = () => {
 
         <Flex span={0}>
           <Exhibit label="SkeletonContainer">
-            <Row>
-              <Flex>
+            <Row wrapOnlyResponsive  responsiveWidth="300px">
+              <Flex span={0} mobileWidth="auto">
                 <SkeletonContainer width="60px" height="60px" borderRadius="50%"/>
               </Flex>
               <Flex span={1}>
                 <Container marginLeft="20px" >
                   <SkeletonContainer borderRadius="5px" width="200px" height="20px" color={theme.colors.lightestText}/>             
                   <SkeletonContainer borderRadius="20px" marginTop="10px" height="10px" />
-                  <SkeletonContainer borderRadius="20px" marginTop="15px" width="300px" height="10px" />            
+                  <SkeletonContainer borderRadius="20px" marginTop="15px" width="50%" height="10px" />            
                 </Container>
               </Flex>
             </Row>
@@ -101,11 +101,11 @@ const LoaderSection = () => {
             <SkeletonContainer borderRadius="20px" marginTop="40px" height="10px" />
             <SkeletonContainer borderRadius="20px" marginTop="15px" height="10px" />
             <SkeletonContainer borderRadius="20px" marginTop="15px" height="10px" />
-            <SkeletonContainer borderRadius="20px" marginTop="15px" height="10px" width="300px"/>
+            <SkeletonContainer borderRadius="20px" marginTop="15px" height="10px" width="50%"/>
 
             <PageDivider/>
 
-            <Row>
+            <Row responsiveCollapse>
               <SkeletonContainer width="60px" height="60px" borderRadius="50%" />
               <Spacing/>
               <SkeletonContainer width="60px" height="60px" borderRadius="20px" />

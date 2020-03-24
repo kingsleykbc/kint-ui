@@ -132,7 +132,7 @@ const Select = ({
         }
 
         .icon :global(svg *){
-          color: ${theme.colors.primaryColor};
+          fill: ${theme.colors.primaryColor};
         }
 
         .icon :global(.search *){
@@ -185,7 +185,7 @@ const Option = ({ icon, label, index, onSelect, isSelected }) => {
         }
 
         .icon :global(svg *){
-          color: ${theme.colors.primaryColor};
+          fill: ${theme.colors.primaryColor};
         }
       `}</style>
     </div>

@@ -172,7 +172,7 @@ export const Status = ({
         }
 
         .Status :global(svg *){
-          color: ${iconColor};
+          fill: ${iconColor};
         }
 
         .action {

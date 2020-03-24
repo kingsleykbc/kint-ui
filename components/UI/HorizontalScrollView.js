@@ -127,11 +127,11 @@ const HorizontalScrollView = ({
         }
 
         .scrollButton :global(svg *){
-          color: ${theme.colors.primaryColor};
+          fill: ${theme.colors.primaryColor};
         }
 
         .scrollButton:hover :global(svg *){
-          color: #fff;
+          fill: #fff;
         }
 
       `}</style>

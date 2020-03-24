@@ -51,6 +51,7 @@ class AreYouSureBox extends PureComponent {
       <Lightbox 
         show={show} 
         toggle={this.toggle} 
+        showCancelButton={false}
         contentPadding="0"
         width="400px"
         autoHeight

@@ -34,6 +34,8 @@ const SkeletonContainer = ({
           overflow: auto;
           display: inline-block;
           width: ${width};
+          max-width: 100%;
+          overflow: hidden;
         }
 
         .SkeletonContainer :global(.container) {

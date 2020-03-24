@@ -102,7 +102,7 @@ class SnackbarMessage extends PureComponent {
           }
 
           .Snackbar :global(svg *){
-            color: ${iconColor};
+            fill: ${iconColor};
           }
 
           .show {

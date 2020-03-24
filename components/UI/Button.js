@@ -127,11 +127,11 @@ const Button = ({
         }
         
         button :global(svg *){
-          color: ${iconColor || textColor};
+          fill: ${iconColor || textColor};
         }
 
         button:hover :global(svg *){
-          color: ${loadingOrDisabled ? `${iconColor || textColor}` : `#fff`};
+          fill: ${loadingOrDisabled ? `${iconColor || textColor}` : `#fff`};
         }
       `}</style>
     </button>

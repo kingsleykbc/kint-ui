@@ -4,7 +4,7 @@ import PageDivider from '../UI/PageDivider';
 const ThemeSection = () => {
   return (
     <div className="ThemeSection">
-      Theme Section
+      {/* Theme Section */}
     </div>
   );
 };

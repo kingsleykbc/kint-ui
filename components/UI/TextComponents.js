@@ -100,11 +100,11 @@ export const IconText = (
         }
 
         .icon :global(svg *){
-          color: ${iconColor || theme.colors.primaryColor};
+          fill: ${iconColor || theme.colors.primaryColor};
         }
 
         .iconBack :global(svg *){
-          color: ${iconBackColor || theme.colors.secondaryColor};
+          fill: ${iconBackColor || theme.colors.secondaryColor};
         }
       `}</style>
     </div>

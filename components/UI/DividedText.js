@@ -23,7 +23,7 @@ const DividedText = ({ items, color, dividerColor, divider, paddingBetween }) =>
       }
 
       .Divider :global(svg *){
-        color: ${dividerColor};
+        fill: ${dividerColor} !important;
       }
     `}</style>
   </div>; 

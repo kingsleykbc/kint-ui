@@ -104,7 +104,7 @@ const ResultPage = ({
         }
 
         .iconSection :global(svg *){
-          color: ${iconColor};
+          fill: ${iconColor};
         }
 
         .title {
@@ -128,7 +128,7 @@ const ResultPage = ({
         }
 
         .ResultPage :global(.roundResultIcon svg *) {
-          color: ${theme.colors.textColor};
+          fill: ${theme.colors.textColor};
         }
 
         .footer {

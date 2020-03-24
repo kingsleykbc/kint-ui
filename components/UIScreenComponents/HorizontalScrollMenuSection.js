@@ -86,8 +86,8 @@ const ScrollItem = ({label = "Item", isRounded}) => {
           font-size: 2.1em;
         }
 
-        .same :global(*){
-          color: ${theme.colors.primaryColor};
+        .same :global(svg *){
+          fill: ${theme.colors.primaryColor};
         }
       `}</style>
 

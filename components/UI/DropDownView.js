@@ -112,7 +112,7 @@ const DropDownView = ({
         }
 
         .dropIcon :global(svg *){
-          color: ${arrowColor};
+          fill: ${arrowColor};
         }
 
         .dropIcon.show :global(svg){
