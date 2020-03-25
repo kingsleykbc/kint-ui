@@ -7,7 +7,7 @@ import Container from '../UI/Container';
 const NextButton = ({ page }) => {
   return (
     <Container marginVertical="30px">
-      <Link href={`/hackernews?page=${1}`}>
+      <Link href={`/hackernews?page=${page + 1}`}>
         <a><Button> View page {page + 1} </Button></a>
       </Link>
     </Container>

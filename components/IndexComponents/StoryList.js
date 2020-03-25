@@ -20,7 +20,7 @@ const Story = ({ url, id, title, points, comments_count }) => <Container hasBord
       icon={<IcGo/>}     
       title={title} 
       subTitle={<Text wrap slicedAt={50} color={theme.colors.lightText}>{url}</Text>} 
-      bottomLeft={ 
+      bottomRight={ 
         <DividedText
           items = {[
             <Text fontWeight="bold" fontSize="0.95em" color={theme.colors.lightText}> {points || 0} points</Text>,

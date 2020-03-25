@@ -8,11 +8,17 @@ import { Par, Text } from '../../components/UI/TextComponents';
 import theme from '../../config/theme';
 import { Row, Flex } from '../../components/UI/Flex';
 import CommentList from '../../components/IndexComponents/StoryComponents/CommentList';
+import LoaderHOC from '../../components/UI/LoaderHOC';
+import Button from '../../components/UI/Button';
+import Spacing from '../../components/UI/Spacing';
+import Router from 'next/router';
 
-const Story = ({story, status}) => {
+
+const Story = ({ story, status }) => {
   if (!story) return <Error statusCode={status} />
-  const {title, id, points, user, time_ago, comments, time} = story;
-  const {lightText} = theme.colors;
+
+  const { title, points, user, time_ago, comments, time } = story;
+  const { lightText } = theme.colors;
 
   // =======================================================================
   //  UI
@@ -20,10 +26,15 @@ const Story = ({story, status}) => {
   return (
     <TestLayout head={{ title }}>
       <main>
-        <SectionContent vPadding="50px" maxWidth="800px">
+        <SectionContent vPadding="50px">
+          <Spacing padding="0 0 30px 0">
+            <Button onClick={()=> Router.back()} >Back</Button>
+          </Spacing>
 
           {/* DETAILS */}
-          <h2>{title}</h2>
+          <Row justify="space-between">
+            <h2>{title}</h2>
+          </Row>
           <Container marginTop="20px">
             <Row justify="space-between">
               <Flex>
@@ -42,11 +53,17 @@ const Story = ({story, status}) => {
           </Container>
 
           {/* COMMENTS */}
-          {(comments && comments.length > 0) &&
-            <SectionContent label="Comments" hPadding="0">
-              <CommentList comments={comments} />
-            </SectionContent>
-          }
+          <SectionContent label="Comments" hPadding="0">
+            <LoaderHOC
+              component={CommentList}
+              data={comments}
+              noDataConfig={{
+                message: "No comments",
+                subMessage: "Sorry, we can't find any comments for now."
+              }}
+            />
+          </SectionContent>
+        
 
         </SectionContent>
       </main>
