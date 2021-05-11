@@ -14,7 +14,7 @@
     "classnames": "^2.2.6",
     "formik": "^2.1.4",
     "infinite-react-carousel": "^1.2.11",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.21",
     "next": "9.2.2",
     "nprogress": "^0.2.0",
     "react": "16.13.0",
