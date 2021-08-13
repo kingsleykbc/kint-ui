@@ -15,7 +15,7 @@
     "formik": "^2.1.4",
     "infinite-react-carousel": "^1.2.11",
     "lodash": "^4.17.15",
-    "next": "9.2.2",
+    "next": "11.1.0",
     "nprogress": "^0.2.0",
     "react": "16.13.0",
     "react-breadcrumbs-dynamic": "^1.2.1",
